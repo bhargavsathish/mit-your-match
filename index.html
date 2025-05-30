@@ -4,89 +4,102 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mit, Your Match</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #FFF9F5;
+      background: linear-gradient(to bottom, #fff0f5, #fff);
       color: #111;
+      scroll-behavior: smooth;
     }
     header {
+      background: linear-gradient(to right, #ffb6c1, #db7093);
+      padding: 5rem 2rem;
       text-align: center;
-      background: linear-gradient(to right, #FFC1CC, #B30059);
       color: white;
-      padding: 4rem 2rem;
     }
     header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
+      animation: fadeInDown 1s ease;
     }
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      animation: fadeInUp 1s ease;
     }
     section {
       max-width: 800px;
       margin: auto;
-      padding: 2rem;
+      padding: 3rem 2rem;
     }
     h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
+      font-size: 2.2rem;
+      color: #b30059;
       margin-bottom: 1rem;
-      color: #B30059;
     }
-    .cta {
-      background-color: #B30059;
-      color: white;
-      padding: 1rem;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
+    ul li {
+      margin-bottom: 0.75rem;
     }
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
-      margin: 0.5rem 0;
+      margin: 0.5rem 0 1rem 0;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1rem;
     }
     form button {
-      background-color: #FF69B4;
+      background-color: #ff69b4;
       color: white;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.8rem 1.8rem;
       font-size: 1rem;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      box-shadow: 0 0 15px rgba(255,105,180,0.5);
+      transition: all 0.3s ease;
     }
     form button:hover {
       background-color: #e055a1;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,105,180,0.7);
+    }
+    .cta {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #b30059;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
     }
     .quote {
       font-style: italic;
-      color: #555;
+      color: #444;
       margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Mit, Your Match</h1>
-    <p>One man. One mission. One heart to win.</p>
+    <h1 class="animate__animated animate__fadeInDown">Mit, Your Match</h1>
+    <p class="animate__animated animate__fadeInUp">One man. One mission. One heart to win.</p>
   </header>
 
   <section>
     <h2>Meet Mit</h2>
-    <p>Mit Amin is a Capital One software engineer (formerly at Hinge — yes, really). He’s smart, funny, flirty, and deeply kind. Known affectionately as “Litty Mitty,” he loves anime, café hopping, cooking (especially imitation crab), and running — emotionally and occasionally outdoors.</p>
+    <p class="animate__animated animate__fadeIn">Mit Amin is a Capital One software engineer (formerly at Hinge — yes, really). He’s smart, funny, flirty, and deeply kind. Known affectionately as “Litty Mitty,” he loves anime, café hopping, cooking (especially imitation crab), and running — emotionally and occasionally outdoors.</p>
   </section>
 
   <section>
     <h2>Why He’s a Catch</h2>
-    <ul>
+    <ul class="animate__animated animate__fadeIn">
       <li>💻 Codes by day, charms by night</li>
       <li>🍜 Can cook and flirt simultaneously</li>
       <li>💬 Has banter, heart, and a Spotify for every mood</li>
@@ -95,24 +108,25 @@
 
   <section>
     <h2>What He’s Looking For</h2>
-    <p>Mit is searching for someone who can match his banter, has a soft heart, sharp wit, and ideally shares a love of anime + noodles. Bonus points for book recs and bad puns.</p>
+    <p class="animate__animated animate__fadeIn">Mit is searching for someone who can match his banter, has a soft heart, sharp wit, and ideally shares a love of anime + noodles. Bonus points for book recs and bad puns.</p>
   </section>
 
   <section>
     <h2>Submit Your Pitch</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
+    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST" class="animate__animated animate__fadeInUp">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
       <button type="submit">Shoot Your Shot</button>
     </form>
-    <div class="cta">You shot your shot. Now let’s see if Mit catches feelings.</div>
+    <div class="cta animate__animated animate__fadeInUp">You shot your shot. Now let’s see if Mit catches feelings.</div>
   </section>
 
   <section>
     <h2>What People Are Saying</h2>
-    <p class="quote">“He’s the only man I’d trust with both my secrets and my Spotify.” – Arjun</p>
-    <p class="quote">“Mit once helped me move a couch and didn’t even ask for pizza. Husband material.” – Priya</p>
+    <p class="quote animate__animated animate__fadeInLeft">“He’s the only man I’d trust with both my secrets and my Spotify.” – Arjun</p>
+    <p class="quote animate__animated animate__fadeInRight">“Mit once helped me move a couch and didn’t even ask for pizza. Husband material.” – Priya</p>
   </section>
+
 </body>
 </html>
