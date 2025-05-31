@@ -2,48 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mit, Your Match</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --bg: #fff9f5;
+      --text: #111;
+      --accent: #ff69b4;
+      --card: #fff;
+    }
+    [data-theme="dark"] {
+      --bg: #1c1b22;
+      --text: #f7f7f7;
+      --accent: #ff69b4;
+      --card: #2a2933;
+    }
+
+    html, body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom, #fff0f5, #fff);
-      color: #111;
+      background-color: var(--bg);
+      color: var(--text);
       scroll-behavior: smooth;
+      transition: background 0.4s, color 0.4s;
     }
+
     header {
-      background: linear-gradient(to right, #ffb6c1, #db7093);
-      padding: 5rem 2rem;
       text-align: center;
-      color: white;
+      padding: 4rem 2rem;
     }
     header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
-      animation: fadeInDown 1s ease;
     }
     header p {
-      font-size: 1.3rem;
-      animation: fadeInUp 1s ease;
+      font-size: 1.2rem;
     }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
     section {
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
-      padding: 3rem 2rem;
+      padding: 2rem;
     }
     h2 {
       font-family: 'DM Serif Display', serif;
-      font-size: 2.2rem;
-      color: #b30059;
+      font-size: 2rem;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
-    ul li {
-      margin-bottom: 0.75rem;
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
     }
+
+    .tile {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -51,82 +90,87 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 1rem;
+      background: var(--card);
+      color: var(--text);
     }
     form button {
-      background-color: #ff69b4;
+      background-color: var(--accent);
       color: white;
       border: none;
-      padding: 0.8rem 1.8rem;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(255,105,180,0.5);
-      transition: all 0.3s ease;
+      box-shadow: 0 0 12px rgba(255,105,180,0.4);
     }
     form button:hover {
-      background-color: #e055a1;
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255,105,180,0.7);
+      transform: scale(1.03);
     }
+
     .cta {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: #b30059;
-      color: white;
-      border-radius: 8px;
       text-align: center;
+      margin-top: 2rem;
       font-weight: bold;
-      font-size: 1.1rem;
-    }
-    .quote {
-      font-style: italic;
-      color: #444;
-      margin-bottom: 1rem;
     }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
   <header>
-    <h1 class="animate__animated animate__fadeInDown">Mit, Your Match</h1>
-    <p class="animate__animated animate__fadeInUp">One man. One mission. One heart to win.</p>
+    <h1>Mit, Your Match</h1>
+    <p>One man. One mission. One heart to win.</p>
   </header>
 
   <section>
     <h2>Meet Mit</h2>
-    <p class="animate__animated animate__fadeIn">Mit Amin is a Capital One software engineer (formerly at Hinge — yes, really). He’s smart, funny, flirty, and deeply kind. Known affectionately as “Litty Mitty,” he loves anime, café hopping, cooking (especially imitation crab), and running — emotionally and occasionally outdoors.</p>
+    <div class="tile-grid">
+      <div class="tile">
+        <p><strong>Name:</strong> Mit Amin</p>
+        <p><strong>Job:</strong> Capital One Engineer (ex-Hinge)</p>
+        <p><strong>Hobbies:</strong> Anime, Cooking, Cafés, Running</p>
+        <p><strong>Fun Fact:</strong> Known as "Litty Mitty". Loves imitation crab 🦀</p>
+      </div>
+    </div>
   </section>
 
   <section>
-    <h2>Why He’s a Catch</h2>
-    <ul class="animate__animated animate__fadeIn">
-      <li>💻 Codes by day, charms by night</li>
-      <li>🍜 Can cook and flirt simultaneously</li>
-      <li>💬 Has banter, heart, and a Spotify for every mood</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>What He’s Looking For</h2>
-    <p class="animate__animated animate__fadeIn">Mit is searching for someone who can match his banter, has a soft heart, sharp wit, and ideally shares a love of anime + noodles. Bonus points for book recs and bad puns.</p>
+    <h2>Why He's a Catch</h2>
+    <div class="tile-grid">
+      <div class="tile">💻 Codes by day, charms by night</div>
+      <div class="tile">🍜 Cooks like a pro, flirts like a poet</div>
+      <div class="tile">💬 Fluent in sarcasm and sincerity</div>
+      <div class="tile">🎧 Curates Spotify playlists for your mood</div>
+    </div>
   </section>
 
   <section>
     <h2>Submit Your Pitch</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST" class="animate__animated animate__fadeInUp">
+    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
       <button type="submit">Shoot Your Shot</button>
     </form>
-    <div class="cta animate__animated animate__fadeInUp">You shot your shot. Now let’s see if Mit catches feelings.</div>
+    <div class="cta">You shot your shot. Now let’s see if Mit catches feelings. 💘</div>
   </section>
 
   <section>
     <h2>What People Are Saying</h2>
-    <p class="quote animate__animated animate__fadeInLeft">“He’s the only man I’d trust with both my secrets and my Spotify.” – Arjun</p>
-    <p class="quote animate__animated animate__fadeInRight">“Mit once helped me move a couch and didn’t even ask for pizza. Husband material.” – Priya</p>
+    <div class="tile-grid">
+      <div class="tile">“He helped me move a couch. Didn’t even ask for pizza.” – Priya</div>
+      <div class="tile">“The only man I trust with both my secrets and my Spotify.” – Arjun</div>
+      <div class="tile">“Litty Mitty? More like Hubby Mitty.” – Anonymous</div>
+    </div>
   </section>
 
+  <script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+    }
+    document.documentElement.setAttribute('data-theme', 'light');
+  </script>
 </body>
 </html>
