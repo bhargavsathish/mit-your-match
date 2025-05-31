@@ -15,9 +15,15 @@
       transition: background-color 0.3s ease, color 0.3s ease;
       overflow-x: hidden;
     }
-    [data-theme="dark"] body {
+    body[data-theme="dark"] {
       background-color: #121212;
       color: #f3f3f3;
+    }
+    body[data-theme="dark"] .tile {
+      background-color: #1e1e1e;
+    }
+    body[data-theme="dark"] .tile:hover {
+      background-color: #2c2c2c;
     }
     .theme-toggle {
       position: fixed;
@@ -90,12 +96,6 @@
       transform: scale(1.05);
       background-color: #ffe4ec;
     }
-    [data-theme="dark"] .tile {
-      background-color: #1e1e1e;
-    }
-    [data-theme="dark"] .tile:hover {
-      background-color: #2c2c2c;
-    }
     .tile img {
       max-width: 100%;
       height: 250px;
@@ -138,6 +138,21 @@
     form button:hover {
       background-color: #8b0043;
     }
+    .animated-visual {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      animation: backgroundMove 10s ease infinite alternate;
+    }
+    .testimonial {
+      opacity: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(20px);
+    }
+    .testimonial.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
     @keyframes slideUp {
       0% { transform: translateY(100%); opacity: 0; }
       100% { transform: translateY(0); opacity: 1; }
@@ -147,94 +162,32 @@
       50% { transform: scale(1.1); opacity: 1; }
       100% { transform: scale(1); opacity: 0.7; }
     }
+    @keyframes backgroundMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
   </style>
 </head>
 <body data-theme="light">
-  <div class="theme-toggle">
-    <button onclick="document.body.dataset.theme='light'">☀️</button>
-    <button onclick="document.body.dataset.theme='dark'">🌙</button>
-  </div>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-  <section class="intro">
-    <h1>Mit, Your Match</h1>
-    <p>One Mit. Infinite Potential.</p>
-    <p class="ipo-note">🚨 Mit is going public. This is your chance to invest. 🚨</p>
-  </section>
+  // Dark mode toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.theme-toggle button');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      document.body.dataset.theme = btn.dataset.theme;
+    }));
+  });
 
-  <div class="countdown" id="countdown"></div>
-
-  <section class="tiles">
-    <div class="tile"><img src="1.jpg" alt="Dinner with Mit"><h2>Dinner With Mit</h2><p>Enjoy a night out — he's paying, and maybe falling.</p></div>
-    <div class="tile"><img src="2.jpg" alt="Custom Voice Note"><h2>Custom Voice Note</h2><p>Sweet nothings or bedtime stories? You choose.</p></div>
-    <div class="tile"><img src="3.jpg" alt="Spotify Collab Playlist"><h2>Spotify Collab Playlist</h2><p>A custom set of bops for your future first date.</p></div>
-    <div class="tile"><img src="4.jpg" alt="Cooking Session"><h2>Cooking Session</h2><p>Watch Mit work magic with imitation crab. Maybe you’re next.</p></div>
-    <div class="tile"><img src="5.jpg" alt="Anime Breakdown"><h2>Anime Breakdown</h2><p>Get a personal analysis of your favorite anime with flair and heart.</p></div>
-  </section>
-
-  <section class="testimonials">
-    <h2>Testimonials</h2>
-    <p>"I was ghosted... and I still recommend him." – Alexa, ex-flame</p>
-    <p>"He taught me to love anime. I left my boyfriend for him." – Tina, friend</p>
-    <p>"Mit is a gem. Whoever wins this is lucky." – His Mom</p>
-    <p>"Kissable, dependable, and surprisingly good at charades." – Julia, ex-classmate</p>
-    <p>"It’s giving main character energy." – Aditi, barista</p>
-  </section>
-
-  <section class="faq">
-    <h2>FAQ</h2>
-    <h3>Can I bid with vibes?</h3>
-    <p>Absolutely. Just be intentional about it.</p>
-    <h3>Is Mit really 5’8”?</h3>
-    <p>He’s 5’8” but carries himself like a 6’2” CEO.</p>
-    <h3>Is this legit?</h3>
-    <p>As legit as love gets on the internet.</p>
-    <h3>What if I lose?</h3>
-    <p>You don’t lose. You just meet him after the IPO.</p>
-  </section>
-
-  <section class="form-section">
-    <h2>Submit Your Pitch</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Shoot Your Shot</button>
-    </form>
-    <div id="form-message" style="margin-top:1rem;font-weight:bold;"></div>
-  </section>
-
-  <audio id="bg-music" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Thumri_by_Girija_Devi.ogg" autoplay loop></audio>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ once: true });
-
-    // Countdown timer to July 4th 11:59PM EST
-    const countdown = document.getElementById('countdown');
-    const endDate = new Date('July 5, 2025 03:59:59 GMT').getTime(); // EST
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = endDate - now;
-
-      if (distance < 0) {
-        clearInterval(interval);
-        countdown.innerHTML = "💔 Auction closed. Better luck in your next life.";
-        return;
+  // Reveal testimonials
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.testimonial').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('reveal');
       }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = `⏳ Auction ends in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      document.querySelector('form button').disabled = true;
-      document.getElementById('form-message').innerText = "✅ Thanks for your pitch! Mit will be in touch if you spark joy.";
-      setTimeout(() => event.target.submit(), 1000);
-    }
-  </script>
-</body>
-</html>
+    });
+  });
+</script>
