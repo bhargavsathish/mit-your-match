@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mit, Your Match</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Inter', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
-      background-color: #f6f1e7;
+      background-color: #f9f5ef;
       background-image: url('https://www.transparenttextures.com/patterns/golden-bird.png');
       background-repeat: repeat;
       color: #111;
@@ -17,18 +18,15 @@
       overflow-x: hidden;
       position: relative;
     }
-
     h1, h2 {
       font-family: 'DM Serif Display', serif;
     }
-
     .intro h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
       animation: float 3s infinite ease-in-out;
       text-shadow: 2px 2px 4px #d4af37;
     }
-
     .intro::before {
       content: '';
       position: absolute;
@@ -40,16 +38,13 @@
       animation: pulse 6s infinite;
       z-index: 0;
     }
-
     .intro h1, .intro p, .ipo-note {
       position: relative;
       z-index: 1;
     }
-
     .intro p {
       font-size: 1.2rem;
     }
-
     .ipo-note {
       margin-top: 1rem;
       font-weight: bold;
@@ -57,7 +52,6 @@
       color: #b30059;
       animation: slideUp 2s ease forwards;
     }
-
     .tiles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -66,7 +60,6 @@
       max-width: 1000px;
       margin: auto;
     }
-
     .tile {
       background: linear-gradient(145deg, #fffdf8, #f7ede0);
       border: 2px solid #d4af37;
@@ -79,25 +72,21 @@
       font-weight: 600;
       text-shadow: 1px 1px 2px #d4af37;
     }
-
     .tile:hover {
       transform: scale(1.05);
       background-color: #ffe4ec;
     }
-
     .countdown {
       text-align: center;
       font-size: 1.5rem;
       margin: 2rem auto;
       color: #b30059;
     }
-
     .testimonials, .faq, .form-section {
       max-width: 800px;
       margin: 2rem auto;
       padding: 1rem;
     }
-
     .testimonial {
       background: #fff;
       padding: 1rem;
@@ -105,12 +94,10 @@
       margin-bottom: 1rem;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
     .faq h3 {
       margin-top: 1.5rem;
       color: #b30059;
     }
-
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -119,7 +106,6 @@
       border-radius: 6px;
       font-size: 1rem;
     }
-
     form button {
       background-color: #b30059;
       color: white;
@@ -129,11 +115,9 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     form button:hover {
       background-color: #8b0043;
     }
-
     .divider {
       width: 100%;
       height: 50px;
@@ -141,7 +125,6 @@
       background-size: cover;
       opacity: 0.1;
     }
-
     .auction-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -150,7 +133,6 @@
       max-width: 1000px;
       margin: auto;
     }
-
     .auction-stats span {
       background-color: #fff;
       padding: 1rem;
@@ -159,12 +141,10 @@
       font-weight: 600;
       text-align: center;
     }
-
     @keyframes sparkle {
       0%, 100% { opacity: 0.8; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.2); }
     }
-
     .sparkle {
       position: absolute;
       width: 20px;
@@ -173,70 +153,62 @@
       border-radius: 50%;
       animation: sparkle 2s infinite ease-in-out;
       pointer-events: none;
-      z-index: 10; /* boosted z-index */
+      z-index: 2;
     }
-
     @keyframes float {
       0% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
       100% { transform: translateY(0); }
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    document.addEventListener('mousemove', function(e) {
+      const trail = document.createElement('div');
+      trail.className = 'sparkle';
+      trail.style.top = `${e.clientY}px`;
+      trail.style.left = `${e.clientX}px`;
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 700);
+    });
+  </script>
 </head>
 <body>
   <div class="sparkle" style="top: 50%; left: 30%;"></div>
   <div class="sparkle" style="top: 20%; left: 70%; animation-delay: 1s;"></div>
-
-  <div class="intro">
+  <div class="intro" data-aos="zoom-in">
     <h1>💘 Mit, Your Match 💘</h1>
     <p>One Mit. Infinite Potential. (Emotional net worth: 💎 Priceless)</p>
     <div class="ipo-note">IPO drops July 4 @ 11:59 PM EST 🕛 — bid now or regret forever 💔</div>
   </div>
-
   <div class="divider"></div>
-
   <div class="tiles">
-    <div class="tile">🍽️ Dinner With Mit</div>
-    <div class="tile">🎙️ Custom Voice Note</div>
-    <div class="tile">🎵 Spotify Collab Playlist</div>
-    <div class="tile">🧵 Custom Dating Advice</div>
-    <div class="tile">🎨 Mit Draws You as Anime</div>
-    <div class="tile">🍛 Imitation Crab Cook-Along</div>
+    <div class="tile" data-aos="fade-up">🍽️ Dinner With Mit</div>
+    <div class="tile" data-aos="fade-up" data-aos-delay="100">🎙️ Custom Voice Note</div>
+    <div class="tile" data-aos="fade-up" data-aos-delay="200">🎵 Spotify Collab Playlist</div>
+    <div class="tile" data-aos="fade-up" data-aos-delay="300">🧵 Custom Dating Advice</div>
+    <div class="tile" data-aos="fade-up" data-aos-delay="400">🎨 Mit Draws You as Anime</div>
+    <div class="tile" data-aos="fade-up" data-aos-delay="500">🍛 Imitation Crab Cook-Along</div>
   </div>
-
   <div class="divider"></div>
-
   <div class="auction-stats">
-    <span>📏 Height: 5'7" (7'2" energy)</span>
-    <span>📚 MBTI: INFJ</span>
-    <span>👑 Ethnicity: Indian Royalty</span>
-    <span>💖 Love Language: Banter</span>
-    <span>🔥 Spice Tolerance: 11/10</span>
+    <span data-aos="fade-right">📏 Height: 5'7" (7'2" energy)</span>
+    <span data-aos="fade-right" data-aos-delay="100">📚 MBTI: INFJ</span>
+    <span data-aos="fade-right" data-aos-delay="200">👑 Ethnicity: Indian Royalty</span>
+    <span data-aos="fade-right" data-aos-delay="300">💖 Love Language: Banter</span>
+    <span data-aos="fade-right" data-aos-delay="400">🔥 Spice Tolerance: 11/10</span>
   </div>
-
   <div class="divider"></div>
-
   <div class="testimonials">
     <h2>💬 What People Are Saying</h2>
-    <div class="testimonial">"Mit is like if your favorite playlist came to life — except he cooks too." – Dia</div>
-    <div class="testimonial">"He ghosted me... but in a way that made me feel seen." – Tasha</div>
-    <div class="testimonial">"My mom still asks about him." – Anjali</div>
-    <div class="testimonial">"He's a walking green flag, but don't tell him that." – Laila</div>
-    <div class="testimonial">"My son is one-of-a-kind. He deserves someone extraordinary." – Mit's Mom</div>
+    <div class="testimonial" data-aos="fade-left">"Mit is like if your favorite playlist came to life — except he cooks too." – Dia</div>
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="100">"He ghosted me... but in a way that made me feel seen." – Tasha</div>
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="200">"My mom still asks about him." – Anjali</div>
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="300">"He's a walking green flag, but don't tell him that." – Laila</div>
+    <div class="testimonial" data-aos="fade-left" data-aos-delay="400">"My son is one-of-a-kind. He deserves someone extraordinary." – Mit's Mom</div>
   </div>
-
   <div class="divider"></div>
-
   <div class="faq">
     <h2>❓ FAQ</h2>
     <h3>Can I bid with vibes?</h3>
@@ -248,9 +220,7 @@
     <h3>Is this a prank?</h3>
     <p>Only if you don’t shoot your shot.</p>
   </div>
-
   <div class="divider"></div>
-
   <div class="form-section">
     <h2>📨 Submit Your Bid</h2>
     <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
@@ -262,3 +232,4 @@
   </div>
 </body>
 </html>
+
