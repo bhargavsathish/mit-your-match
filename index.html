@@ -43,6 +43,8 @@
       animation: fadeInIntro 2s ease-in-out;
       position: relative;
       overflow: hidden;
+      text-align: center;
+      padding: 2rem;
     }
     .intro h1 {
       font-family: 'DM Serif Display', serif;
@@ -53,6 +55,14 @@
       font-size: 1.5rem;
       margin-top: 1rem;
       animation: fadeIn 2.5s ease-in;
+    }
+    .hero-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-top: 1rem;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
     @keyframes fadeInIntro {
       from { opacity: 0; }
@@ -66,137 +76,117 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    .animated-heart {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: var(--accent);
-      transform: rotate(-45deg);
-      animation: floatUp 5s infinite ease-in;
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
     }
-    .animated-heart::before,
-    .animated-heart::after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-    .animated-heart::before { top: -15px; left: 0; }
-    .animated-heart::after { top: 0; left: 15px; }
-    @keyframes floatUp {
-      0% { bottom: -30px; left: 50%; opacity: 0; }
-      50% { opacity: 1; }
-      100% { bottom: 100%; left: 55%; opacity: 0; }
-    }
-    .animated-shape {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.4;
-      animation: floatShape 20s infinite alternate ease-in-out;
-    }
-    .circle {
-      width: 100px;
-      height: 100px;
-      background: var(--accent);
-      top: 20%;
-      left: 10%;
-    }
-    .triangle {
-      width: 0;
-      height: 0;
-      border-left: 60px solid transparent;
-      border-right: 60px solid transparent;
-      border-bottom: 100px solid var(--accent);
-      top: 60%;
-      left: 80%;
-      transform: rotate(20deg);
-    }
-    @keyframes floatShape {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-20px) rotate(360deg); }
-    }
-    .countdown {
+    .stat-card {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 10px;
       text-align: center;
-      font-size: 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .ticker {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem;
+      text-align: center;
+      animation: marquee 10s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .testimonials {
+      padding: 2rem;
+      background: var(--card);
+      text-align: center;
+    }
+    .testimonials h2 {
+      font-family: 'DM Serif Display', serif;
+      margin-bottom: 1rem;
+    }
+    .testimonial-block {
+      background: rgba(255,255,255,0.05);
+      padding: 1rem 2rem;
+      border-radius: 12px;
       margin: 1rem auto;
+      max-width: 600px;
+      position: relative;
+      border: 1px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .testimonial-block:hover {
+      transform: scale(1.02);
+    }
+    .testimonial-icon {
+      font-size: 1.5rem;
+      position: absolute;
+      top: -0.75rem;
+      left: -0.75rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      padding: 0.5rem;
+    }
+    .testimonial-text {
+      font-style: italic;
+      font-size: 1.1rem;
+      padding-left: 2rem;
+    }
+    .source {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-align: right;
     }
   </style>
 </head>
 <body>
+  <div class="ticker">🔥 HOT BIDS: Priya from Brooklyn matched Mit's MBTI • Rhea just submitted a voice note pitch • Swipe left on ordinary, swipe right on Mit 🔥</div>
   <div class="intro">
     <h1>Mit, Your Match</h1>
     <p>Welcome to the most exclusive emotional IPO of the year.</p>
-    <div class="animated-shape circle"></div>
-    <div class="animated-shape triangle"></div>
+    <img src="https://via.placeholder.com/150" alt="Mit's Portrait" class="hero-image"/>
+    <div class="stat-grid">
+      <div class="stat-card">5'10" (6’2" energy)</div>
+      <div class="stat-card">MBTI: ENFMit</div>
+      <div class="stat-card">Net Worth: Emotional</div>
+      <div class="stat-card">Love Language: Sarcasm</div>
+    </div>
   </div>
-  <div class="animated-heart" style="bottom: 0; left: 20%;"></div>
-  <div class="animated-heart" style="bottom: 10%; left: 40%; animation-delay: 1s;"></div>
-  <div class="animated-heart" style="bottom: 20%; left: 60%; animation-delay: 2s;"></div>
-
-  <div class="countdown">
-    <strong>Auction closes in:</strong> <span id="timer"></span>
-  </div>
-
-  <script>
-    const endDate = new Date("July 4, 2025 23:59:59 EST").getTime();
-    const countdown = document.getElementById("timer");
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = endDate - now;
-
-      if (diff <= 0) {
-        countdown.textContent = "The auction is live. Bid now!";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-
-  <main style="padding: 2rem; max-width: 800px; margin: auto;">
-    <section>
-      <h2>Meet Mit</h2>
-      <p>Capital One engineer, ex-Hinge coder, anime enthusiast, café explorer. He runs — emotionally and occasionally outdoors.</p>
-    </section>
-    <section>
-      <h2>Auction Perks</h2>
-      <ul>
-        <li>🍜 Dinner with Mit</li>
-        <li>🎧 Custom voice note</li>
-        <li>📀 Collab Spotify playlist</li>
-        <li>🌟 One (1) emotional support text</li>
-        <li>👑 Rajah of Romance: 26th in line to the Gujju throne</li>
-      </ul>
-    </section>
-    <section>
-      <h2>What People Are Saying</h2>
-      <blockquote>"He ghosted me, but in a way that made me feel seen." – An Ex</blockquote>
-      <blockquote>"We are simply waiting for grandchildren." – Mit’s Mom</blockquote>
-    </section>
-    <section>
-      <h2>FAQ</h2>
-      <p><strong>Can I bid with vibes?</strong> Yes, but vibes will be scrutinized by a panel of aunties. 🧿</p>
-    </section>
-    <section>
-      <h2>Bid Now</h2>
-      <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-        <button type="submit">Submit Your Bid</button>
-      </form>
-    </section>
-  </main>
+  <section class="testimonials">
+    <h2>What Women Are Saying</h2>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">🎭</div>
+      <p class="testimonial-text">He ghosted me... but in a way that made me feel seen.<span class="source">– Riya</span></p>
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">🌶️</div>
+      <p class="testimonial-text">The only red flag is how fast I caught feelings.<span class="source">– Sneha</span></p>
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">🍜</div>
+      <p class="testimonial-text">He’s the kind of guy who makes you laugh mid-crisis and cooks you Maggi after.<span class="source">– Tara</span></p>
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">🧣</div>
+      <p class="testimonial-text">Mit has the emotional range of a Karan Johar film. In the best way.<span class="source">– Kavya</span></p>
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">💻</div>
+      <p class="testimonial-text">He once told me I was like a well-written Python function. I still don’t know what that means, but I felt butterflies.<span class="source">– Neha</span></p>
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-icon">👩‍👦</div>
+      <p class="testimonial-text">Mit is everything I ever wanted for my son. Ladies, what are you waiting for?<span class="source">– Mit’s Mom</span></p>
+    </div>
+  </section>
 </body>
 </html>
