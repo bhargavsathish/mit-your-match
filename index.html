@@ -984,11 +984,11 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       if (!nsfwUnlocked && nsfwToggle.checked) {
         // Prompt for password
         setTimeout(() => {
-          let code = prompt("Enter the 6-digit NSFW code to unlock spicy mode:");
+          let code = prompt("Enter the 6-digit code to unlock the Easter Egg mode:");
           if (code === NSFW_CODE) {
             nsfwUnlocked = true;
             nsfwToggle.checked = true;
-            nsfwLabel.textContent = 'NSFW mode: ON';
+            nsfwLabel.textContent = 'Easter Egg: ON';
             document.body.classList.add('nsfw-mode');
             swapHearts(heartEmojisNSFW);
             makeNSFWContent();
@@ -1001,12 +1001,12 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       }
       if (nsfwToggle.checked) {
         document.body.classList.add('nsfw-mode');
-        nsfwLabel.textContent = 'NSFW mode: ON';
+        nsfwLabel.textContent = 'Easter Egg: ON';
         swapHearts(heartEmojisNSFW);
         makeNSFWContent();
       } else {
         document.body.classList.remove('nsfw-mode');
-        nsfwLabel.textContent = 'NSFW mode';
+        nsfwLabel.textContent = 'Easter Egg';
         swapHearts(heartEmojisSFW);
         revertNSFWContent();
       }
@@ -1030,14 +1030,14 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
         nsfwTiles.style.display = '';
         nsfwTiles.innerHTML = `
           <div class="tile"><b>🍑 Late Night Dessert Tasting</b> <span style="color:#ff69b4;">(No utensils required)</span></div>
-          <div class="tile"><b>👄 Whispered Secrets & Lip Service</b></div>
-          <div class="tile"><b>🛏️ Breakfast in Bed</b> <span style="color:#ff69b4;">(Or just stay in bed)</span></div>
-          <div class="tile"><b>🍷 Wine, Dine, and Unwind</b></div>
-          <div class="tile"><b>🔥 After-Hours Massage Exchange</b></div>
-          <div class="tile"><b>🍒 Truth or Dare:</b> <span style="color:#ff69b4;">Unfiltered Edition</span></div>
-          <div class="tile"><b>🩲 Lingerie Fashion Show</b> <span style="color:#ff69b4;">(Audience: Mit)</span></div>
-          <div class="tile"><b>🦵 Leg Day</b> <span style="color:#ff69b4;">(But not at the gym)</span></div>
-          <div class="tile"><b>💋 Kissing Lessons</b> <span style="color:#ff69b4;">(Advanced Only)</span></div>
+          <div class="tile"><b>👄 Whispered Secrets & Lip Service</b> <span style="color:#ff69b4;">(NSFW: Not So Forgettable Whispers)</span></div>
+          <div class="tile"><b>🛏️ Breakfast in Bed</b> <span style="color:#ff69b4;">(Or just stay in bed... all day)</span></div>
+          <div class="tile"><b>🍷 Wine, Dine, and Unwind</b> <span style="color:#ff69b4;">(Clothes optional)</span></div>
+          <div class="tile"><b>🔥 After-Hours Massage Exchange</b> <span style="color:#ff69b4;">(Happy endings guaranteed)</span></div>
+          <div class="tile"><b>🍒 Truth or Dare:</b> <span style="color:#ff69b4;">Unfiltered, Uncensored</span></div>
+          <div class="tile"><b>🩲 Lingerie Fashion Show</b> <span style="color:#ff69b4;">(Audience: Mit, Judge: Chemistry)</span></div>
+          <div class="tile"><b>🦵 Leg Day</b> <span style="color:#ff69b4;">(But not at the gym...)</span></div>
+          <div class="tile"><b>💋 Kissing Lessons</b> <span style="color:#ff69b4;">(Advanced Only—bring chapstick)</span></div>
         `;
       }
 
@@ -1055,13 +1055,13 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       const auctionStats = document.querySelector('.auction-stats');
       if (auctionStats) {
         auctionStats.innerHTML = `
-          <span><b>🍆 Energy:</b> Off the charts</span>
-          <span><b>🍑 Favorite Asset:</b> You’ll have to find out</span>
+          <span><b>🍆 Energy:</b> Off the charts (and the bed)</span>
+          <span><b>🍑 Favorite Asset:</b> You’ll have to find out (hint: it’s not just his heart)</span>
           <span><b>💋 Kissing Style:</b> Slow, deep, and unforgettable</span>
           <span><b>🛏️ Stamina:</b> Let’s just say you’ll need breakfast in bed</span>
-          <span><b>🔥 Flirt Game:</b> Dangerously high</span>
-          <span><b>🍷 Favorite Move:</b> Whispering in your ear</span>
-          <span><b>🩲 Dress Code:</b> Optional</span>
+          <span><b>🔥 Flirt Game:</b> Dangerously high—may cause blushing</span>
+          <span><b>🍷 Favorite Move:</b> Whispering in your ear (and maybe biting it)</span>
+          <span><b>🩲 Dress Code:</b> Optional (encouraged: less is more)</span>
           <span><b>💦 Weakness:</b> Soft touches & bold souls</span>
           <span><b>🎨 Can Draw You Like One of His French Girls</b></span>
         `;
@@ -1071,35 +1071,6 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       const testimonialsHeader = document.querySelector('.testimonials-section h2');
       if (testimonialsHeader) {
         testimonialsHeader.innerHTML = '💋🔥 What They Whisper About Mit 🔥💋';
-      }
-
-      // --- FAQ Section ---
-      const sfwFaq = document.querySelector('.sfw-faq');
-      const nsfwFaq = document.querySelector('.nsfw-faq');
-      if (sfwFaq && nsfwFaq) {
-        sfwFaq.style.display = 'none';
-        nsfwFaq.style.display = '';
-        nsfwFaq.innerHTML = `
-          <h2 style="color:#ff69b4;">❓ NSFW FAQ: All Your Spiciest Questions, Answered ❓</h2>
-          <div class="faq-item"><h3>How spicy can Mit get?</h3><p><b>He can handle the heat—in and out of the kitchen.</b></p></div>
-          <div class="faq-item"><h3>Is Mit a good kisser?</h3><p><b>Rumor has it, you’ll be left breathless and wanting more…</b></p></div>
-          <div class="faq-item"><h3>What happens after midnight?</h3><p><b>That’s for you and Mit to discover. No spoilers.</b></p></div>
-          <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p><b>Only if you promise to wear nothing else.</b></p></div>
-          <div class="faq-item"><h3>How does Mit handle PDA?</h3><p><b>He believes in hands everywhere—and kisses that linger.</b></p></div>
-        `;
-      }
-
-      // --- Form Section Header & CTA ---
-      const formHeader = document.querySelector('.form-section h2');
-      if (formHeader) {
-        formHeader.innerHTML = '🔥 Submit Your Boldest Bid';
-      }
-      const sfwFormCta = document.querySelector('.sfw-form-cta');
-      const nsfwFormCta = document.querySelector('.nsfw-form-cta');
-      if (sfwFormCta && nsfwFormCta) {
-        sfwFormCta.style.display = 'none';
-        nsfwFormCta.style.display = '';
-        nsfwFormCta.innerHTML = "<b>Don’t be shy—Mit likes it bold. 😏</b>";
       }
 
       // --- Testimonials (carousel) ---
@@ -1114,6 +1085,35 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
         window.testimonials = testimonialsNSFW;
         window.testimonialIndex = 0;
         showTestimonial(0);
+      }
+
+      // --- FAQ Section ---
+      const sfwFaq = document.querySelector('.sfw-faq');
+      const nsfwFaq = document.querySelector('.nsfw-faq');
+      if (sfwFaq && nsfwFaq) {
+        sfwFaq.style.display = 'none';
+        nsfwFaq.style.display = '';
+        nsfwFaq.innerHTML = `
+          <h2 style="color:#ff69b4;">❓ Easter Egg FAQ: All Your Spiciest Questions, Answered ❓</h2>
+          <div class="faq-item"><h3>How spicy can Mit get?</h3><p><b>He can handle the heat—in and out of the kitchen (and everywhere else).</b></p></div>
+          <div class="faq-item"><h3>Is Mit a good kisser?</h3><p><b>Rumor has it, you’ll be left breathless and wanting more…</b></p></div>
+          <div class="faq-item"><h3>What happens after midnight?</h3><p><b>That’s for you and Mit to discover. No spoilers (but bring water).</b></p></div>
+          <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p><b>Only if you promise to wear nothing else.</b></p></div>
+          <div class="faq-item"><h3>How does Mit handle PDA?</h3><p><b>He believes in hands everywhere—and kisses that linger (and wander).</b></p></div>
+        `;
+      }
+
+      // --- Form Section Header & CTA ---
+      const formHeader = document.querySelector('.form-section h2');
+      if (formHeader) {
+        formHeader.innerHTML = '🔥 Submit Your Boldest Bid';
+      }
+      const sfwFormCta = document.querySelector('.sfw-form-cta');
+      const nsfwFormCta = document.querySelector('.nsfw-form-cta');
+      if (sfwFormCta && nsfwFormCta) {
+        sfwFormCta.style.display = 'none';
+        nsfwFormCta.style.display = '';
+        nsfwFormCta.innerHTML = "<b>Don’t be shy—Mit likes it bold. 😏</b>";
       }
     }
 
@@ -1204,20 +1204,6 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
         sfwFormCta.style.display = '';
         nsfwFormCta.style.display = 'none';
         sfwFormCta.innerHTML = "Don’t be shy—this is your moment!";
-      }
-
-      // --- Testimonials (carousel) ---
-      const testimonialsSFW = [
-        'Mit is like if your favorite playlist came to life — except he cooks too. – Dia',
-        'He ghosted me... but in a way that made me feel seen. – Tasha',
-        'My mom still asks about him. – Anjali',
-        "He's a walking green flag, but don't tell him that. – Laila",
-        "My son is one-of-a-kind. He deserves someone extraordinary. – Mit's Mom"
-      ];
-      if (typeof showTestimonial === "function") {
-        window.testimonials = testimonialsSFW;
-        window.testimonialIndex = 0;
-        showTestimonial(0);
       }
     }
   });
@@ -1386,6 +1372,10 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
   input.addEventListener('keydown', function(e) {
     if (e.key === "Enter") unlockSite();
 
+
+
+
+
   });
 
   // Prevent scrolling while locked
@@ -1402,5 +1392,63 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
   100% { transform: scale(1);}
 }
 </style>
+<!-- Add this near the end of your <body>, after all other scripts -->
+<script>
+  // --- Heart emoji sets for SFW and NSFW/Easter Egg ---
+  const heartEmojisSFW = [
+    '💖','💙','💚','💛','💜','🧡','🤎','🩷','🩵','🩶','❤️','🖤',
+    '💸','🥃','🏃‍♂️','🏃‍♀️','💌','💍','💋','💃','🕺'
+  ];
+  const heartEmojisNSFW = [
+    '💋','🍑','🍒','👄','🔥','🩲','🛏️','🍆','🥵','🥂','🍷','😏','😈','💦','🦵','👅','💣','🫦','👙','🕺','💃'
+  ];
+
+  // --- Easter Egg Toggle Logic ---
+  const nsfwToggle = document.getElementById('nsfwToggle');
+  const nsfwLabel = document.getElementById('nsfwLabel');
+  let nsfwUnlocked = false;
+  const NSFW_CODE = "696969";
+
+  nsfwToggle.addEventListener('change', function(e) {
+    if (!nsfwUnlocked && nsfwToggle.checked) {
+      setTimeout(() => {
+        let code = prompt("Enter the 6-digit code to unlock the Easter Egg mode:");
+        if (code === NSFW_CODE) {
+          nsfwUnlocked = true;
+          nsfwToggle.checked = true;
+          nsfwLabel.textContent = 'Easter Egg: ON';
+          document.body.classList.add('nsfw-mode');
+          swapHearts(heartEmojisNSFW);
+          makeNSFWContent();
+        } else {
+          nsfwToggle.checked = false;
+          alert("Nice try, but only those who know the secret code get to see Mit's wild side. 😉");
+        }
+      }, 100);
+      return;
+    }
+    if (nsfwToggle.checked) {
+      document.body.classList.add('nsfw-mode');
+      nsfwLabel.textContent = 'Easter Egg: ON';
+      swapHearts(heartEmojisNSFW);
+      makeNSFWContent();
+    } else {
+      document.body.classList.remove('nsfw-mode');
+      nsfwLabel.textContent = 'Easter Egg';
+      swapHearts(heartEmojisSFW);
+      revertNSFWContent();
+    }
+  });
+
+  function swapHearts(emojiArr) {
+    const hearts = document.querySelectorAll('.hearts-bg .heart');
+    hearts.forEach((heart, i) => {
+      heart.textContent = emojiArr[i % emojiArr.length];
+    });
+  }
+
+  // --- Paste your makeNSFWContent and revertNSFWContent here (from previous answer) ---
+  // ... (your functions from above) ...
+</script>
 </body>
 </html>
