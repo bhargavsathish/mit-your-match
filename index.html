@@ -83,6 +83,28 @@
     @keyframes fadeInIntro { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .image-gallery {
+      padding: 2rem;
+      background: var(--bg);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -193,7 +215,18 @@
     <button onclick="document.body.dataset.theme='dark'">🌙</button>
     <button onclick="document.body.dataset.theme='mughal'">👑</button>
   </div>
-  <!-- rest of page unchanged -->
+
+  <section class="image-gallery">
+    <h2 style="text-align: center;">A Glimpse of Mit</h2>
+    <div class="gallery-grid">
+      <img src="images/1.jpg" alt="Mit 1">
+      <img src="images/2.jpg" alt="Mit 2">
+      <img src="images/3.jpg" alt="Mit 3">
+      <img src="images/4.jpg" alt="Mit 4">
+      <img src="images/5.jpg" alt="Mit 5">
+    </div>
+  </section>
+
   <script>
     const countdown = document.getElementById("countdown");
     const end = new Date("July 4, 2025 23:59:00").getTime();
