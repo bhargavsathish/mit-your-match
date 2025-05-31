@@ -18,7 +18,12 @@
       --accent: #ff69b4;
       --card: #2a2933;
     }
-
+    [data-theme="mughal"] {
+      --bg: #2e1f27;
+      --text: #fcebd5;
+      --accent: #d4af37;
+      --card: #4b2e39;
+    }
     html, body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -27,35 +32,44 @@
       scroll-behavior: smooth;
       transition: background 0.4s, color 0.4s;
     }
-
     header {
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem 3rem;
     }
     header h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 1rem;
     }
     header p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
-    .theme-toggle {
+    .theme-toggle, .mughal-toggle {
       position: fixed;
       top: 1rem;
-      right: 1rem;
       background: var(--accent);
       color: white;
       border: none;
       padding: 0.5rem 1rem;
       border-radius: 8px;
       cursor: pointer;
+      z-index: 1000;
     }
-
+    .theme-toggle {
+      right: 6.5rem;
+    }
+    .mughal-toggle {
+      right: 1rem;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: var(--accent);
+    }
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 2rem;
+      padding: 3rem 2rem;
     }
     h2 {
       font-family: 'DM Serif Display', serif;
@@ -63,14 +77,12 @@
       color: var(--accent);
       margin-bottom: 1rem;
     }
-
     .tile-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
       margin-top: 1rem;
     }
-
     .tile {
       background: var(--card);
       padding: 1.5rem;
@@ -82,7 +94,6 @@
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
-
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -103,10 +114,9 @@
       cursor: pointer;
       box-shadow: 0 0 12px rgba(255,105,180,0.4);
     }
-    form button:hover {
-      transform: scale(1.03);
+    .faq-item {
+      margin-bottom: 1rem;
     }
-
     .cta {
       text-align: center;
       margin-top: 2rem;
@@ -115,53 +125,65 @@
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark</button>
+  <button class="mughal-toggle" onclick="toggleMughal()">Mughal Mode</button>
 
   <header>
     <h1>Mit, Your Match</h1>
-    <p>One man. One mission. One heart to win.</p>
+    <p>One Mit. Infinite Potential.</p>
+    <div class="countdown" id="countdown"></div>
   </header>
 
   <section>
-    <h2>Meet Mit</h2>
+    <h2>Auction Perks</h2>
     <div class="tile-grid">
-      <div class="tile">
-        <p><strong>Name:</strong> Mit Amin</p>
-        <p><strong>Job:</strong> Capital One Engineer (ex-Hinge)</p>
-        <p><strong>Hobbies:</strong> Anime, Cooking, Cafés, Running</p>
-        <p><strong>Fun Fact:</strong> Known as "Litty Mitty". Loves imitation crab 🦀</p>
-      </div>
+      <div class="tile">🍝 Dinner With Mit</div>
+      <div class="tile">🎤 Custom Voice Note</div>
+      <div class="tile">🎧 Spotify Collab Playlist</div>
+      <div class="tile">👻 One Polite Ghosting</div>
+      <div class="tile">📸 Polaroid Selfie Drop</div>
+      <div class="tile">🧠 Deep Conversation™</div>
     </div>
   </section>
 
   <section>
-    <h2>Why He's a Catch</h2>
+    <h2>Vital Stats</h2>
     <div class="tile-grid">
-      <div class="tile">💻 Codes by day, charms by night</div>
-      <div class="tile">🍜 Cooks like a pro, flirts like a poet</div>
-      <div class="tile">💬 Fluent in sarcasm and sincerity</div>
-      <div class="tile">🎧 Curates Spotify playlists for your mood</div>
+      <div class="tile">📏 5'10" (but 6'2" energy)</div>
+      <div class="tile">💼 Net Worth: Emotional</div>
+      <div class="tile">📊 MBTI: Mit</div>
+      <div class="tile">📍 Location: In your heart (but technically in Virginia)</div>
+      <div class="tile">👑 Rajah of Romance, 26th in line to the Gujju throne</div>
     </div>
   </section>
 
   <section>
-    <h2>Submit Your Pitch</h2>
+    <h2>Testimonials</h2>
+    <div class="tile-grid">
+      <div class="tile">“He ghosted me, but in a way that made me feel seen.” – Ex #2</div>
+      <div class="tile">“He helped me move a couch. Didn’t even ask for pizza.” – Priya</div>
+      <div class="tile">“Honestly? 13/10. Would get dumped again.” – Arjun</div>
+      <div class="tile">“We are simply waiting for grandchildren.” – Mit's mom</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+    <div class="faq-item"><strong>Can I bid with vibes?</strong> Yes, but bonus points if you also have a dog.</div>
+    <div class="faq-item"><strong>Is Mit emotionally available?</strong> He's got range — and receipts.</div>
+    <div class="faq-item"><strong>Is this real?</strong> As real as your last situationship.</div>
+    <div class="faq-item"><strong>How do I protect Mit from haters?</strong> Just click the 🧿 in your heart.</div>
+  </section>
+
+  <section>
+    <h2>Bid Now</h2>
     <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Shoot Your Shot</button>
+      <button type="submit">Submit Your Bid</button>
     </form>
-    <div class="cta">You shot your shot. Now let’s see if Mit catches feelings. 💘</div>
-  </section>
-
-  <section>
-    <h2>What People Are Saying</h2>
-    <div class="tile-grid">
-      <div class="tile">“He helped me move a couch. Didn’t even ask for pizza.” – Priya</div>
-      <div class="tile">“The only man I trust with both my secrets and my Spotify.” – Arjun</div>
-      <div class="tile">“Litty Mitty? More like Hubby Mitty.” – Anonymous</div>
-    </div>
+    <div class="cta">Submit your pitch. Win the date. Make history.</div>
   </section>
 
   <script>
@@ -170,7 +192,32 @@
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
     }
+    function toggleMughal() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'mughal' ? 'light' : 'mughal';
+      document.documentElement.setAttribute('data-theme', next);
+    }
     document.documentElement.setAttribute('data-theme', 'light');
+
+    // Countdown timer to July 4, 2024 11:59 PM EST
+    const countdownEl = document.getElementById('countdown');
+    const countdownDate = new Date('July 4, 2024 23:59:00 EST').getTime();
+
+    setInterval(function () {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `⏳ Auction ends in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        countdownEl.innerHTML = "🚨 Auction Closed";
+      }
+    }, 1000);
   </script>
 </body>
 </html>
