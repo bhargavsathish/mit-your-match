@@ -31,193 +31,172 @@
       color: var(--text);
       scroll-behavior: smooth;
       transition: background 0.4s, color 0.4s;
+      overflow-x: hidden;
     }
-    header {
-      text-align: center;
-      padding: 5rem 2rem 3rem;
+    .intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to right, var(--accent), var(--bg));
+      animation: fadeInIntro 2s ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
-    header h1 {
+    .intro h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
+      font-size: 4rem;
+      animation: slideDown 1.5s ease-out;
     }
-    header p {
-      font-size: 1.3rem;
-    }
-    .theme-toggle, .mughal-toggle {
-      position: fixed;
-      top: 1rem;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    .theme-toggle {
-      right: 6.5rem;
-    }
-    .mughal-toggle {
-      right: 1rem;
-    }
-    .countdown {
+    .intro p {
       font-size: 1.5rem;
       margin-top: 1rem;
-      color: var(--accent);
+      animation: fadeIn 2.5s ease-in;
     }
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 3rem 2rem;
+    @keyframes fadeInIntro {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-    .tile {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .animated-heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: var(--accent);
+      transform: rotate(-45deg);
+      animation: floatUp 5s infinite ease-in;
     }
-    .tile:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    .animated-heart::before,
+    .animated-heart::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: var(--accent);
+      border-radius: 50%;
     }
-    form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin: 0.5rem 0 1rem 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      background: var(--card);
-      color: var(--text);
+    .animated-heart::before { top: -15px; left: 0; }
+    .animated-heart::after { top: 0; left: 15px; }
+    @keyframes floatUp {
+      0% { bottom: -30px; left: 50%; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 100%; left: 55%; opacity: 0; }
     }
-    form button {
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(255,105,180,0.4);
+    .animated-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: floatShape 20s infinite alternate ease-in-out;
     }
-    .faq-item {
-      margin-bottom: 1rem;
+    .circle {
+      width: 100px;
+      height: 100px;
+      background: var(--accent);
+      top: 20%;
+      left: 10%;
     }
-    .cta {
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 100px solid var(--accent);
+      top: 60%;
+      left: 80%;
+      transform: rotate(20deg);
+    }
+    @keyframes floatShape {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-20px) rotate(360deg); }
+    }
+    .countdown {
       text-align: center;
-      margin-top: 2rem;
-      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 1rem auto;
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark</button>
-  <button class="mughal-toggle" onclick="toggleMughal()">Mughal Mode</button>
-
-  <header>
+  <div class="intro">
     <h1>Mit, Your Match</h1>
-    <p>One Mit. Infinite Potential.</p>
-    <div class="countdown" id="countdown"></div>
-  </header>
+    <p>Welcome to the most exclusive emotional IPO of the year.</p>
+    <div class="animated-shape circle"></div>
+    <div class="animated-shape triangle"></div>
+  </div>
+  <div class="animated-heart" style="bottom: 0; left: 20%;"></div>
+  <div class="animated-heart" style="bottom: 10%; left: 40%; animation-delay: 1s;"></div>
+  <div class="animated-heart" style="bottom: 20%; left: 60%; animation-delay: 2s;"></div>
 
-  <section>
-    <h2>Auction Perks</h2>
-    <div class="tile-grid">
-      <div class="tile">🍝 Dinner With Mit</div>
-      <div class="tile">🎤 Custom Voice Note</div>
-      <div class="tile">🎧 Spotify Collab Playlist</div>
-      <div class="tile">👻 One Polite Ghosting</div>
-      <div class="tile">📸 Polaroid Selfie Drop</div>
-      <div class="tile">🧠 Deep Conversation™</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Vital Stats</h2>
-    <div class="tile-grid">
-      <div class="tile">📏 5'10" (but 6'2" energy)</div>
-      <div class="tile">💼 Net Worth: Emotional</div>
-      <div class="tile">📊 MBTI: Mit</div>
-      <div class="tile">📍 Location: In your heart (but technically in Virginia)</div>
-      <div class="tile">👑 Rajah of Romance, 26th in line to the Gujju throne</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Testimonials</h2>
-    <div class="tile-grid">
-      <div class="tile">“He ghosted me, but in a way that made me feel seen.” – Ex #2</div>
-      <div class="tile">“He helped me move a couch. Didn’t even ask for pizza.” – Priya</div>
-      <div class="tile">“Honestly? 13/10. Would get dumped again.” – Arjun</div>
-      <div class="tile">“We are simply waiting for grandchildren.” – Mit's mom</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>FAQ</h2>
-    <div class="faq-item"><strong>Can I bid with vibes?</strong> Yes, but bonus points if you also have a dog.</div>
-    <div class="faq-item"><strong>Is Mit emotionally available?</strong> He's got range — and receipts.</div>
-    <div class="faq-item"><strong>Is this real?</strong> As real as your last situationship.</div>
-    <div class="faq-item"><strong>How do I protect Mit from haters?</strong> Just click the 🧿 in your heart.</div>
-  </section>
-
-  <section>
-    <h2>Bid Now</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Submit Your Bid</button>
-    </form>
-    <div class="cta">Submit your pitch. Win the date. Make history.</div>
-  </section>
+  <div class="countdown">
+    <strong>Auction closes in:</strong> <span id="timer"></span>
+  </div>
 
   <script>
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-    }
-    function toggleMughal() {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'mughal' ? 'light' : 'mughal';
-      document.documentElement.setAttribute('data-theme', next);
-    }
-    document.documentElement.setAttribute('data-theme', 'light');
+    const endDate = new Date("July 4, 2025 23:59:59 EST").getTime();
+    const countdown = document.getElementById("timer");
 
-    // Countdown timer to July 4, 2024 11:59 PM EST
-    const countdownEl = document.getElementById('countdown');
-    const countdownDate = new Date('July 4, 2024 23:59:00 EST').getTime();
-
-    setInterval(function () {
+    function updateCountdown() {
       const now = new Date().getTime();
-      const distance = countdownDate - now;
+      const diff = endDate - now;
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `⏳ Auction ends in ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      if (distance < 0) {
-        countdownEl.innerHTML = "🚨 Auction Closed";
+      if (diff <= 0) {
+        countdown.textContent = "The auction is live. Bid now!";
+        return;
       }
-    }, 1000);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
+
+  <main style="padding: 2rem; max-width: 800px; margin: auto;">
+    <section>
+      <h2>Meet Mit</h2>
+      <p>Capital One engineer, ex-Hinge coder, anime enthusiast, café explorer. He runs — emotionally and occasionally outdoors.</p>
+    </section>
+    <section>
+      <h2>Auction Perks</h2>
+      <ul>
+        <li>🍜 Dinner with Mit</li>
+        <li>🎧 Custom voice note</li>
+        <li>📀 Collab Spotify playlist</li>
+        <li>🌟 One (1) emotional support text</li>
+        <li>👑 Rajah of Romance: 26th in line to the Gujju throne</li>
+      </ul>
+    </section>
+    <section>
+      <h2>What People Are Saying</h2>
+      <blockquote>"He ghosted me, but in a way that made me feel seen." – An Ex</blockquote>
+      <blockquote>"We are simply waiting for grandchildren." – Mit’s Mom</blockquote>
+    </section>
+    <section>
+      <h2>FAQ</h2>
+      <p><strong>Can I bid with vibes?</strong> Yes, but vibes will be scrutinized by a panel of aunties. 🧿</p>
+    </section>
+    <section>
+      <h2>Bid Now</h2>
+      <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
+        <button type="submit">Submit Your Bid</button>
+      </form>
+    </section>
+  </main>
 </body>
 </html>
