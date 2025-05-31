@@ -98,7 +98,7 @@
     }
     .tile img {
       max-width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 1rem;
@@ -176,6 +176,8 @@
     <p>"I was ghosted... and I still recommend him." – Alexa, ex-flame</p>
     <p>"He taught me to love anime. I left my boyfriend for him." – Tina, friend</p>
     <p>"Mit is a gem. Whoever wins this is lucky." – His Mom</p>
+    <p>"Kissable, dependable, and surprisingly good at charades." – Julia, ex-classmate</p>
+    <p>"It’s giving main character energy." – Aditi, barista</p>
   </section>
 
   <section class="faq">
@@ -186,16 +188,19 @@
     <p>He’s 5’8” but carries himself like a 6’2” CEO.</p>
     <h3>Is this legit?</h3>
     <p>As legit as love gets on the internet.</p>
+    <h3>What if I lose?</h3>
+    <p>You don’t lose. You just meet him after the IPO.</p>
   </section>
 
   <section class="form-section">
     <h2>Submit Your Pitch</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
+    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
       <button type="submit">Shoot Your Shot</button>
     </form>
+    <div id="form-message" style="margin-top:1rem;font-weight:bold;"></div>
   </section>
 
   <audio id="bg-music" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Thumri_by_Girija_Devi.ogg" autoplay loop></audio>
@@ -206,7 +211,7 @@
 
     // Countdown timer to July 4th 11:59PM EST
     const countdown = document.getElementById('countdown');
-    const endDate = new Date('July 4, 2025 23:59:59 EST').getTime();
+    const endDate = new Date('July 5, 2025 03:59:59 GMT').getTime(); // EST
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = endDate - now;
@@ -223,6 +228,13 @@
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       countdown.innerHTML = `⏳ Auction ends in ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      document.querySelector('form button').disabled = true;
+      document.getElementById('form-message').innerText = "✅ Thanks for your pitch! Mit will be in touch if you spark joy.";
+      setTimeout(() => event.target.submit(), 1000);
+    }
   </script>
 </body>
 </html>
