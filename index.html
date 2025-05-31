@@ -8,24 +8,24 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
-        background-color: #f6f1e7;
-        background-image: url('https://www.transparenttextures.com/patterns/golden-bird.png');
-        background-repeat: repeat;
-      color: #111;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      overflow-x: hidden;
+          margin: 0;
+          font-family: 'Inter', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+          background-color: #f6f1e7;
+          background-image: url('https://www.transparenttextures.com/patterns/golden-bird.png');
+          background-repeat: repeat;
+          color: #111;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          overflow-x: hidden;
     }
     h1, h2 {
       font-family: 'DM Serif Display', serif;
     }
-    .intro {
-      text-align: center;
-      padding: 4rem 1rem 2rem;
-      animation: fadeIn 1.5s ease-out;
-      position: relative;
-    }
+    .intro h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: float 3s infinite ease-in-out;
+  text-shadow: 2px 2px 4px #d4af37;
+}
     .intro::before {
       content: '';
       position: absolute;
@@ -64,15 +64,17 @@
       margin: auto;
     }
     .tile {
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
+  background: linear-gradient(145deg, #fffdf8, #f7ede0);
+  border: 2px solid #d4af37;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #d4af37;
+}
     .tile:hover {
       transform: scale(1.05);
       background-color: #ffe4ec;
@@ -142,9 +144,32 @@
       font-weight: 600;
       text-align: center;
     }
+    @keyframes sparkle {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      
+      .sparkle {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(circle, gold 0%, transparent 70%);
+        border-radius: 50%;
+        animation: sparkle 2s infinite ease-in-out;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+    @keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
   </style>
 </head>
 <body>
+    <div class="sparkle" style="top: 50%; left: 30%;"></div>
+    <div class="sparkle" style="top: 20%; left: 70%; animation-delay: 1s;"></div>
   <div class="intro">
     <h1>💘 Mit, Your Match 💘</h1>
     <p>One Mit. Infinite Potential. (Emotional net worth: 💎 Priceless)</p>
