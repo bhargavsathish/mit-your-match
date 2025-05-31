@@ -161,9 +161,15 @@
       100% { transform: translateY(0); }
     }
   </style>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    AOS.init({
+      once: true, // Optional: ensures animations happen only once
+      duration: 1000 // Optional: sets animation duration in ms
+    });
+
+    // Sparkle trail
     document.addEventListener('mousemove', function(e) {
       const trail = document.createElement('div');
       trail.className = 'sparkle';
@@ -172,7 +178,8 @@
       document.body.appendChild(trail);
       setTimeout(() => trail.remove(), 700);
     });
-  </script>
+  });
+</script>
 </head>
 <body>
   <div class="sparkle" style="top: 50%; left: 30%;"></div>
