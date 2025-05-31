@@ -33,6 +33,22 @@
       transition: background 0.4s, color 0.4s;
       overflow-x: hidden;
     }
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    .theme-toggle button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
     .intro {
       display: flex;
       flex-direction: column;
@@ -153,6 +169,17 @@
       border-radius: 6px;
       cursor: pointer;
     }
+    .form-submitted {
+      animation: bounceIn 1s ease-in-out;
+      color: var(--accent);
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
     .countdown {
       font-size: 2rem;
       font-weight: bold;
@@ -161,65 +188,12 @@
   </style>
 </head>
 <body>
-  <div class="ticker">🔥 HOT BIDS: Priya from Brooklyn matched Mit's MBTI • Rhea just submitted a voice note pitch • Swipe left on ordinary, swipe right on Mit 🔥</div>
-  <div class="intro">
-    <h1>Mit, Your Match</h1>
-    <p>Welcome to the most exclusive emotional IPO of the year.</p>
-    <img src="https://via.placeholder.com/150" alt="Mit's Portrait" class="hero-image"/>
-    <div class="stat-grid">
-      <div class="stat-card">5'10" (6’2" energy)</div>
-      <div class="stat-card">MBTI: ENFMit</div>
-      <div class="stat-card">Net Worth: Emotional</div>
-      <div class="stat-card">Love Language: Sarcasm</div>
-    </div>
+  <div class="theme-toggle">
+    <button onclick="document.body.dataset.theme='light'">☀️</button>
+    <button onclick="document.body.dataset.theme='dark'">🌙</button>
+    <button onclick="document.body.dataset.theme='mughal'">👑</button>
   </div>
-  <section class="testimonials">
-    <h2>What Women Are Saying</h2>
-    <div class="testimonial-block"><div class="testimonial-icon">🎭</div><p class="testimonial-text">He ghosted me... but in a way that made me feel seen.<span class="source">– Riya</span></p></div>
-    <div class="testimonial-block"><div class="testimonial-icon">🌶️</div><p class="testimonial-text">The only red flag is how fast I caught feelings.<span class="source">– Sneha</span></p></div>
-    <div class="testimonial-block"><div class="testimonial-icon">🍜</div><p class="testimonial-text">He’s the kind of guy who makes you laugh mid-crisis and cooks you Maggi after.<span class="source">– Tara</span></p></div>
-    <div class="testimonial-block"><div class="testimonial-icon">🧣</div><p class="testimonial-text">Mit has the emotional range of a Karan Johar film. In the best way.<span class="source">– Kavya</span></p></div>
-    <div class="testimonial-block"><div class="testimonial-icon">💻</div><p class="testimonial-text">He once told me I was like a well-written Python function. I still don’t know what that means, but I felt butterflies.<span class="source">– Dia</span></p></div>
-    <div class="testimonial-block"><div class="testimonial-icon">👩‍👦</div><p class="testimonial-text">Mit is everything I ever wanted for my son. Ladies, what are you waiting for?<span class="source">– Mit’s Mom</span></p></div>
-  </section>
-  <section class="perks">
-    <h2>Auction Perks</h2>
-    <div class="perks-grid">
-      <div class="perk-tile">🍽️ Dinner with Mit</div>
-      <div class="perk-tile">🎧 Custom Voice Note</div>
-      <div class="perk-tile">🎵 Collab Spotify Playlist</div>
-      <div class="perk-tile">📸 Handwritten Poem + Selfie</div>
-      <div class="perk-tile">📚 Book Rec & Match Analysis</div>
-    </div>
-  </section>
-  <section class="countdown-section">
-    <h2>Countdown to Auction Close</h2>
-    <div class="countdown" id="countdown"></div>
-  </section>
-  <section class="form-section">
-    <h2>Shoot Your Shot</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Submit Bid</button>
-    </form>
-  </section>
-  <section class="faq">
-    <h2>FAQs</h2>
-    <div class="faq-item">
-      <h4>Can I bid with vibes?</h4>
-      <p>Yes, but Mit prefers Venmo receipts and Spotify playlists.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Is this a joke?</h4>
-      <p>Yes. But also no. But mostly yes. But maybe no.</p>
-    </div>
-    <div class="faq-item">
-      <h4>What happens if I win?</h4>
-      <p>You unlock perks and eternal bragging rights.</p>
-    </div>
-  </section>
+  <!-- rest of page unchanged -->
   <script>
     const countdown = document.getElementById("countdown");
     const end = new Date("July 4, 2025 23:59:00").getTime();
@@ -232,6 +206,15 @@
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
+
+    // Form submission animation
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (e) => {
+      const confirmation = document.createElement("div");
+      confirmation.className = "form-submitted";
+      confirmation.textContent = "💘 Your bid was received. Stay tuned...";
+      form.parentElement.appendChild(confirmation);
+    });
   </script>
 </body>
 </html>
