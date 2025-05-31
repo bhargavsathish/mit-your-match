@@ -76,12 +76,6 @@
       transform: scale(1.05);
       background-color: #ffe4ec;
     }
-    .countdown {
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 2rem auto;
-      color: #b30059;
-    }
     .testimonials, .faq, .form-section {
       max-width: 800px;
       margin: 2rem auto;
@@ -161,25 +155,20 @@
       100% { transform: translateY(0); }
     }
   </style>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    AOS.init({
-      once: true, // Optional: ensures animations happen only once
-      duration: 1000 // Optional: sets animation duration in ms
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({ once: true, duration: 1000 });
+      document.addEventListener('mousemove', function(e) {
+        const trail = document.createElement('div');
+        trail.className = 'sparkle';
+        trail.style.top = `${e.clientY}px`;
+        trail.style.left = `${e.clientX}px`;
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 700);
+      });
     });
-
-    // Sparkle trail
-    document.addEventListener('mousemove', function(e) {
-      const trail = document.createElement('div');
-      trail.className = 'sparkle';
-      trail.style.top = `${e.clientY}px`;
-      trail.style.left = `${e.clientX}px`;
-      document.body.appendChild(trail);
-      setTimeout(() => trail.remove(), 700);
-    });
-  });
-</script>
+  </script>
 </head>
 <body>
   <div class="sparkle" style="top: 50%; left: 30%;"></div>
