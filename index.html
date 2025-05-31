@@ -13,12 +13,10 @@
       color: #111;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
     [data-theme="dark"] body {
       background-color: #121212;
       color: #f3f3f3;
     }
-
     .theme-toggle {
       position: fixed;
       top: 1rem;
@@ -32,11 +30,9 @@
       border: none;
       cursor: pointer;
     }
-
     h1, h2 {
       font-family: 'DM Serif Display', serif;
     }
-
     .intro {
       text-align: center;
       padding: 4rem 1rem 2rem;
@@ -49,111 +45,41 @@
     .intro p {
       font-size: 1.2rem;
     }
-    .hero-image {
-      max-width: 250px;
-      border-radius: 16px;
-      margin-top: 1.5rem;
-    }
-
-    .countdown-section, .perks, .testimonials, .faq, .form-section, .image-gallery {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-
-    .countdown {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-top: 0.5rem;
-    }
-
-    .perks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-    .perk-tile {
-      background-color: #ffd5ec;
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      font-weight: 500;
-      transition: transform 0.3s ease;
-    }
-    .perk-tile:hover {
-      transform: scale(1.05);
-    }
-
-    .testimonial-block {
-      margin-bottom: 2rem;
-      padding: 1rem;
-      background-color: #fbe4ef;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .testimonial-icon {
-      font-size: 1.5rem;
-    }
-    .testimonial-text {
-      font-style: italic;
-      margin-top: 0.5rem;
-    }
-    .source {
-      display: block;
-      font-weight: bold;
-      margin-top: 0.25rem;
-    }
-
-    .faq-item {
-      margin-bottom: 1.5rem;
-    }
-    .faq-item h4 {
-      margin-bottom: 0.25rem;
-    }
-
-    .form-section form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    input, textarea {
-      padding: 0.75rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    button[type="submit"] {
-      background-color: #b30059;
-      color: white;
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button[type="submit"]:hover {
-      background-color: #99004d;
-    }
-    .form-submitted {
+    .ipo-note {
       margin-top: 1rem;
-      color: #007744;
       font-weight: bold;
+      font-size: 1.1rem;
+      color: #b30059;
+      animation: slideUp 2s ease forwards;
     }
-
-    .gallery-grid {
+    .tiles {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-      padding: 1rem 0;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
     }
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 10px;
+    .tile {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .tile:hover {
+      transform: scale(1.05);
+      background-color: #ffe4ec;
+    }
+    [data-theme="dark"] .tile {
+      background-color: #1e1e1e;
+    }
+    [data-theme="dark"] .tile:hover {
+      background-color: #2c2c2c;
+    }
+    @keyframes slideUp {
+      0% { transform: translateY(100%); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
@@ -166,111 +92,30 @@
   <section class="intro">
     <h1>Mit, Your Match</h1>
     <p>One Mit. Infinite Potential.</p>
-    <img class="hero-image" src="images/1.jpg" alt="Mit Hero" />
+    <p class="ipo-note">🚨 Mit is going public. This is your chance to invest. 🚨</p>
   </section>
 
-  <section class="countdown-section">
-    <h2>Auction Ends In</h2>
-    <div id="countdown" class="countdown">Loading...</div>
-  </section>
-
-  <section class="perks">
-    <h2>🔥 Auction Perks</h2>
-    <div class="perks-grid">
-      <div class="perk-tile">🍣 Dinner With Mit</div>
-      <div class="perk-tile">🎤 Custom Voice Note</div>
-      <div class="perk-tile">🎧 Spotify Collab Playlist</div>
-      <div class="perk-tile">📖 Shared Anime Watchlist</div>
-      <div class="perk-tile">📸 Aesthetic Photo Walk</div>
-      <div class="perk-tile">✉️ One Flirty Handwritten Letter</div>
+  <section class="tiles">
+    <div class="tile">
+      <h2>Dinner With Mit</h2>
+      <p>Enjoy a night out — he's paying, and maybe falling.</p>
+    </div>
+    <div class="tile">
+      <h2>Custom Voice Note</h2>
+      <p>Sweet nothings or bedtime stories? You choose.</p>
+    </div>
+    <div class="tile">
+      <h2>Spotify Collab Playlist</h2>
+      <p>A custom set of bops for your future first date.</p>
+    </div>
+    <div class="tile">
+      <h2>Cooking Session</h2>
+      <p>Watch Mit work magic with imitation crab. Maybe you’re next.</p>
+    </div>
+    <div class="tile">
+      <h2>Anime Breakdown</h2>
+      <p>Get a personal analysis of your favorite anime with flair and heart.</p>
     </div>
   </section>
-
-  <section class="testimonials">
-    <h2>💬 What People Are Saying</h2>
-    <div class="testimonial-block">
-      <div class="testimonial-icon">💌</div>
-      <p class="testimonial-text">"He ghosted me... but in a way that made me feel seen."<br><span class="source">– Anjali, Brooklyn</span></p>
-    </div>
-    <div class="testimonial-block">
-      <div class="testimonial-icon">💌</div>
-      <p class="testimonial-text">"Mit once helped me debug my code... and my dating life."<br><span class="source">– Maya, NYC</span></p>
-    </div>
-    <div class="testimonial-block">
-      <div class="testimonial-icon">💌</div>
-      <p class="testimonial-text">"He’s the reason I believe in soft boys with sharp banter."<br><span class="source">– Dia, Richmond</span></p>
-    </div>
-    <div class="testimonial-block">
-      <div class="testimonial-icon">💌</div>
-      <p class="testimonial-text">"Mit is husband material. My son deserves the best."<br><span class="source">– Mit’s Mom</span></p>
-    </div>
-  </section>
-
-  <section class="faq">
-    <h2>❓FAQ</h2>
-    <div class="faq-item">
-      <h4>Can I bid with vibes?</h4>
-      <p>Absolutely. Mit accepts emotional currency.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Is this real?</h4>
-      <p>As real as your last situationship.</p>
-    </div>
-    <div class="faq-item">
-      <h4>Is Mit actually single?</h4>
-      <p>Unfortunately for him, yes. Fortunately for you, also yes.</p>
-    </div>
-    <div class="faq-item">
-      <h4>How tall is Mit?</h4>
-      <p>5'8" — but with 6'2" energy.</p>
-    </div>
-  </section>
-
-  <section class="form-section">
-    <h2>📨 Submit Your Bid</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Your email" required />
-      <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Shoot Your Shot</button>
-    </form>
-  </section>
-
-  <section class="image-gallery">
-    <h2 style="text-align: center;">📸 A Glimpse of Mit</h2>
-    <div class="gallery-grid">
-      <img src="images/1.jpg" alt="Mit 1">
-      <img src="images/2.jpg" alt="Mit 2">
-      <img src="images/3.jpg" alt="Mit 3">
-      <img src="images/4.jpg" alt="Mit 4">
-      <img src="images/5.jpg" alt="Mit 5">
-    </div>
-  </section>
-
-  <script>
-    const countdown = document.getElementById("countdown");
-    const end = new Date("July 4, 2025 23:59:00").getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = end - now;
-      if (distance <= 0) {
-        countdown.innerHTML = "Auction Closed";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
-
-    const form = document.querySelector("form");
-    form.addEventListener("submit", (e) => {
-      const confirmation = document.createElement("div");
-      confirmation.className = "form-submitted";
-      confirmation.textContent = "💘 Your bid was received. Stay tuned...";
-      form.parentElement.appendChild(confirmation);
-    });
-  </script>
 </body>
 </html>
