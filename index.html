@@ -7,16 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <style>
-    body {
-          margin: 0;
-          font-family: 'Inter', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
-          background-color: #f6f1e7;
-          background-image: url('https://www.transparenttextures.com/patterns/golden-bird.png');
-          background-repeat: repeat;
-          color: #111;
-          transition: background-color 0.3s ease, color 0.3s ease;
-          overflow-x: hidden;
-    }
+ body {
+  margin: 0;
+  font-family: 'Inter', system-ui, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  background-color: #f6f1e7;
+  background-image: url('https://www.transparenttextures.com/patterns/golden-bird.png');
+  background-repeat: repeat;
+  color: #111;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  position: relative; /* ✅ add this */
+}
     h1, h2 {
       font-family: 'DM Serif Display', serif;
     }
@@ -40,10 +41,6 @@
     .intro h1, .intro p, .ipo-note {
       position: relative;
       z-index: 1;
-    }
-    .intro h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
     }
     .intro p {
       font-size: 1.2rem;
