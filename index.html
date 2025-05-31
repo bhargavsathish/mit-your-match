@@ -696,7 +696,7 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       <h2 style="color:#ffd700;font-family:'DM Serif Display',serif;font-size:2.2rem;text-align:center;margin-bottom:1.5rem;letter-spacing:2px;">
       Ready to risk it all for a little (or a lot of) Mit?
     </h2>
-    <p style="color:#fffbe6;font-size:1.15rem;text-align:center;margin-bottom:2rem;">Enter the secret password to unlock Mit's world.</p>
+   
     <input id="sitePasswordInput" type="password" placeholder="Password" style="width:260px;max-width:100vw;padding:1rem;font-size:1.2rem;border-radius:1.2rem;border:2px solid #ffd700;background:#191919;color:#ffd700;text-align:center;outline:none;margin-bottom:1.2rem;">
     <button id="sitePasswordBtn" style="width:100%;padding:0.9rem 0;font-size:1.15rem;font-family:'DM Serif Display',serif;font-weight:700;color:#191919;background:linear-gradient(90deg,#ffd700 10%,#b30059 90%);border:none;border-radius:1.2rem;box-shadow:0 2px 12px #ffd70055;cursor:pointer;letter-spacing:1.5px;">
       I'm ready – Enter
@@ -1012,389 +1012,7 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
       }
     });
 
-    // Swap floating hearts to new emoji set
-    function swapHearts(emojiArr) {
-      const hearts = document.querySelectorAll('.hearts-bg .heart');
-      hearts.forEach((heart, i) => {
-        heart.textContent = emojiArr[i % emojiArr.length];
-      });
-    }
-
-    // Make the page more NSFW (text, tiles, etc)
-    function makeNSFWContent() {
-      // --- Tiles ---
-      const sfwTiles = document.querySelector('.sfw-tiles');
-      const nsfwTiles = document.querySelector('.nsfw-tiles');
-      if (sfwTiles && nsfwTiles) {
-        sfwTiles.style.display = 'none';
-        nsfwTiles.style.display = '';
-        nsfwTiles.innerHTML = `
-          <div class="tile"><b>🍑 Late Night Dessert Tasting</b> <span style="color:#ff69b4;">(No utensils required)</span></div>
-          <div class="tile"><b>👄 Whispered Secrets & Lip Service</b> <span style="color:#ff69b4;">(NSFW: Not So Forgettable Whispers)</span></div>
-          <div class="tile"><b>🛏️ Breakfast in Bed</b> <span style="color:#ff69b4;">(Or just stay in bed... all day)</span></div>
-          <div class="tile"><b>🍷 Wine, Dine, and Unwind</b> <span style="color:#ff69b4;">(Clothes optional)</span></div>
-          <div class="tile"><b>🔥 After-Hours Massage Exchange</b> <span style="color:#ff69b4;">(Happy endings guaranteed)</span></div>
-          <div class="tile"><b>🍒 Truth or Dare:</b> <span style="color:#ff69b4;">Unfiltered, Uncensored</span></div>
-          <div class="tile"><b>🩲 Lingerie Fashion Show</b> <span style="color:#ff69b4;">(Audience: Mit, Judge: Chemistry)</span></div>
-          <div class="tile"><b>🦵 Leg Day</b> <span style="color:#ff69b4;">(But not at the gym...)</span></div>
-          <div class="tile"><b>💋 Kissing Lessons</b> <span style="color:#ff69b4;">(Advanced Only—bring chapstick)</span></div>
-        `;
-      }
-
-      // --- Features Section Header ---
-      const featuresHeader = document.querySelector('.features-section h2');
-      if (featuresHeader) {
-        featuresHeader.innerHTML = '🔥 The Spicy Side: What You & Mit Could Get Up To 🔥';
-      }
-
-      // --- Stats Section Header & Stats ---
-      const statsHeader = document.querySelector('.stats-section h2');
-      if (statsHeader) {
-        statsHeader.innerHTML = '💦 The NSFW Rundown: Can You Handle Him?';
-      }
-      const auctionStats = document.querySelector('.auction-stats');
-      if (auctionStats) {
-        auctionStats.innerHTML = `
-          <span><b>🍆 Energy:</b> Off the charts (and the bed)</span>
-          <span><b>🍑 Favorite Asset:</b> You’ll have to find out (hint: it’s not just his heart)</span>
-          <span><b>💋 Kissing Style:</b> Slow, deep, and unforgettable</span>
-          <span><b>🛏️ Stamina:</b> Let’s just say you’ll need breakfast in bed</span>
-          <span><b>🔥 Flirt Game:</b> Dangerously high—may cause blushing</span>
-          <span><b>🍷 Favorite Move:</b> Whispering in your ear (and maybe biting it)</span>
-          <span><b>🩲 Dress Code:</b> Optional (encouraged: less is more)</span>
-          <span><b>💦 Weakness:</b> Soft touches & bold souls</span>
-          <span><b>🎨 Can Draw You Like One of His French Girls</b></span>
-        `;
-      }
-
-      // --- Testimonials Section Header ---
-      const testimonialsHeader = document.querySelector('.testimonials-section h2');
-      if (testimonialsHeader) {
-        testimonialsHeader.innerHTML = '💋🔥 What They Whisper About Mit 🔥💋';
-      }
-
-      // --- Testimonials (carousel) ---
-      const testimonialsNSFW = [
-        "<b>Mit’s kisses are more addictive than his cooking.</b> – Anonymous",
-        "<b>He’s got a PhD in pleasure.</b> – Also Anonymous",
-        "<b>He left me breathless—in more ways than one.</b> – S.",
-        "<b>I thought I could handle the heat. I was wrong.</b> – T.",
-        "<b>The only thing more dangerous than his smile is his touch.</b> – R."
-      ];
-      if (window.testimonials && typeof showTestimonial === "function") {
-        window.testimonials = testimonialsNSFW;
-        window.testimonialIndex = 0;
-        showTestimonial(0);
-      }
-
-      // --- FAQ Section ---
-      const sfwFaq = document.querySelector('.sfw-faq');
-      const nsfwFaq = document.querySelector('.nsfw-faq');
-      if (sfwFaq && nsfwFaq) {
-        sfwFaq.style.display = 'none';
-        nsfwFaq.style.display = '';
-        nsfwFaq.innerHTML = `
-          <h2 style="color:#ff69b4;">❓ Easter Egg FAQ: All Your Spiciest Questions, Answered ❓</h2>
-          <div class="faq-item"><h3>How spicy can Mit get?</h3><p><b>He can handle the heat—in and out of the kitchen (and everywhere else).</b></p></div>
-          <div class="faq-item"><h3>Is Mit a good kisser?</h3><p><b>Rumor has it, you’ll be left breathless and wanting more…</b></p></div>
-          <div class="faq-item"><h3>What happens after midnight?</h3><p><b>That’s for you and Mit to discover. No spoilers (but bring water).</b></p></div>
-          <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p><b>Only if you promise to wear nothing else.</b></p></div>
-          <div class="faq-item"><h3>How does Mit handle PDA?</h3><p><b>He believes in hands everywhere—and kisses that linger (and wander).</b></p></div>
-        `;
-      }
-
-      // --- Form Section Header & CTA ---
-      const formHeader = document.querySelector('.form-section h2');
-      if (formHeader) {
-        formHeader.innerHTML = '🔥 Submit Your Boldest Bid';
-      }
-      const sfwFormCta = document.querySelector('.sfw-form-cta');
-      const nsfwFormCta = document.querySelector('.nsfw-form-cta');
-      if (sfwFormCta && nsfwFormCta) {
-        sfwFormCta.style.display = 'none';
-        nsfwFormCta.style.display = '';
-        nsfwFormCta.innerHTML = "<b>Don’t be shy—Mit likes it bold. 😏</b>";
-      }
-    }
-
-    function revertNSFWContent() {
-      // --- Tiles ---
-      const sfwTiles = document.querySelector('.sfw-tiles');
-      const nsfwTiles = document.querySelector('.nsfw-tiles');
-      if (sfwTiles && nsfwTiles) {
-        sfwTiles.style.display = '';
-        nsfwTiles.style.display = 'none';
-        sfwTiles.innerHTML = `
-          <div class="tile" data-aos="fade-up">🍽️ Candlelit Chaos with Mit</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="100">🎤 Karaoke Duet Showdown</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="200">🎵 Spotify Collab Playlist</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="300">🕺 Midnight Rooftop Dance Party</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="400">🍦 Ice Cream Taste Test Challenge</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="500">📸 Polaroid Photoshoot Keepsake</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="600">🎨 Mit Draws You as Anime</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="700">🍛 Imitation Crab Cook-Along</div>
-          <div class="tile" data-aos="fade-up" data-aos-delay="800">🧩 Late Night Deep Talks & Puzzle Solving</div>
-        `;
-      }
-
-      // --- Features Section Header ---
-      const featuresHeader = document.querySelector('.features-section h2');
-      if (featuresHeader) {
-        featuresHeader.innerHTML = '✨ Imagine the Possibilities of Things You Could Do With Him ✨';
-      }
-
-      // --- Stats Section Header & Stats ---
-      const statsHeader = document.querySelector('.stats-section h2');
-      if (statsHeader) {
-        statsHeader.innerHTML = '💫 The Royal Rundown: Is Your Heart Ready?';
-      }
-      const auctionStats = document.querySelector('.auction-stats');
-      if (auctionStats) {
-        auctionStats.innerHTML = `
-          <span data-aos="fade-right">📏 Height: 5'7" (7'2" energy)</span>
-          <span data-aos="fade-right" data-aos-delay="100">📚 MBTI: INFJ</span>
-          <span data-aos="fade-right" data-aos-delay="200">👑 Ethnicity: Indian Royalty</span>
-          <span data-aos="fade-right" data-aos-delay="300">💖 Love Language: Banter</span>
-          <span data-aos="fade-right" data-aos-delay="400">🔥 Spice Tolerance: 11/10</span>
-          <span data-aos="fade-right" data-aos-delay="500">😏 Flirt Game: Dangerously High</span>
-          <span data-aos="fade-right" data-aos-delay="600">🎨 Can Draw You Like One of His French Girls</span>
-          <span data-aos="fade-right" data-aos-delay="700">🎵 Playlist Game: Certified Heartthrob</span>
-          <span data-aos="fade-right" data-aos-delay="800">🍦 Ice Cream Preference: Shares the Last Bite</span>
-          <span data-aos="fade-right" data-aos-delay="900">🕺 Dance Moves: Will Make You Laugh (or Swoon)</span>
-          <span data-aos="fade-right" data-aos-delay="1000">💬 Text Back Speed: Faster Than Your Ex</span>
-          <span data-aos="fade-right" data-aos-delay="1100">🌙 Ideal Date: Deep Talks Until 3AM</span>
-        `;
-      }
-
-      // --- Testimonials Section Header ---
-      const testimonialsHeader = document.querySelector('.testimonials-section h2');
-      if (testimonialsHeader) {
-        testimonialsHeader.innerHTML = '👑✨ What People Are Saying ✨👑';
-      }
-
-      // --- FAQ Section ---
-      const sfwFaq = document.querySelector('.sfw-faq');
-      const nsfwFaq = document.querySelector('.nsfw-faq');
-      if (sfwFaq && nsfwFaq) {
-        sfwFaq.style.display = '';
-        nsfwFaq.style.display = 'none';
-        sfwFaq.innerHTML = `
-          <h2>💎 FAQ: All Your Burning Questions, Answered 💎</h2>
-          <div class="faq-item"><h3>Can I bid with vibes?</h3><p>Absolutely. Bonus points for poetry or playlists.</p></div>
-          <div class="faq-item"><h3>Is this real?</h3><p>Is love ever not?</p></div>
-          <div class="faq-item"><h3>What happens after the auction?</h3><p>We connect you with Mit (or not, depending on vibes compatibility).</p></div>
-          <div class="faq-item"><h3>Is this a prank?</h3><p>Only if you don’t shoot your shot.</p></div>
-          <div class="faq-item"><h3>Will Mit serenade me if I win?</h3><p>Only if you promise not to fall too hard.</p></div>
-          <div class="faq-item"><h3>Is Mit a good kisser?</h3><p>Rumor has it, you’ll be left wanting more…</p></div>
-          <div class="faq-item"><h3>Can I expect a midnight “u up?” text?</h3><p>If the vibes are right, you might get more than one.</p></div>
-          <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p>Only if you promise to wear it on the next date.</p></div>
-          <div class="faq-item"><h3>What’s Mit’s stance on PDA?</h3><p>He believes in holding hands—and maybe stealing a kiss when no one’s looking.</p></div>
-          <div class="faq-item"><h3>How does Mit handle spicy situations?</h3><p>He can take the heat—in the kitchen and out.</p></div>
-        `;
-      }
-
-      // --- Form Section Header & CTA ---
-      const formHeader = document.querySelector('.form-section h2');
-      if (formHeader) {
-        formHeader.innerHTML = '✨ Submit Your Bid';
-      }
-      const sfwFormCta = document.querySelector('.sfw-form-cta');
-      const nsfwFormCta = document.querySelector('.nsfw-form-cta');
-      if (sfwFormCta && nsfwFormCta) {
-        sfwFormCta.style.display = '';
-        nsfwFormCta.style.display = 'none';
-        sfwFormCta.innerHTML = "Don’t be shy—this is your moment!";
-      }
-    }
-  });
-</script>
-  <!-- Intro Animation Overlay -->
-<div id="introOverlay" style="position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 60% 40%, #222 60%, #111 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1s;opacity:1; border:3px solid #ffd70088; box-shadow:0 0 64px 8px #ffd70044,0 0 0 12px #b3005922; animation:royalGlow 2.5s infinite alternate;">
-  <!-- Animated heart that moves left to right -->
-  <div id="throbHeartBg" style="position:absolute;left:0;top:50%;transform:translateY(-50%);z-index:0;pointer-events:none;opacity:0.19;filter:blur(0.5px);width:100%;">
-    <div class="sexy-throb-heart" id="mainHeart" style="font-size:10rem;display:flex;align-items:center;justify-content:center;animation:throbHeart 1.2s infinite cubic-bezier(.77,0,.18,1);text-shadow:0 0 48px #b30059cc,0 0 24px #ffd70099,0 0 18px #b3005988;position:absolute;left:0;top:50%;transform:translateY(-50%);transition:left 0.15s;">
-      💖
-    </div>
-  </div>
-  <audio id="heartbeatAudio" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae6e7.mp3" preload="auto" loop></audio>
-  <div style="text-align:center;max-width:90vw;z-index:1;position:relative;">
-    <div style="margin-bottom: 1.2rem;">
-      <span style="font-size:3.2rem;filter:drop-shadow(0 0 12px #ffd700cc);">👑</span>
-    </div>
-    <div class="sexy-glow-title" style="
-      font-size:3.5rem;
-      letter-spacing:2.5px;
-      font-family:'DM Serif Display','Pacifico',serif;
-      background:linear-gradient(90deg,#ffd700 10%,#b30059 90%);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-      text-fill-color:transparent;
-      text-shadow:0 6px 32px #ffd70055,0 0 12px #b30059aa;
-      animation: popIn 1.2s cubic-bezier(.77,0,.18,1), sexyPulse 2.5s infinite alternate;
-      font-weight:900;
-      margin-bottom:1.2rem;
-      ">
-      <span style="font-size:2.2rem;vertical-align:middle;filter:drop-shadow(0 0 8px #ffd700cc);margin-right:0.5rem;">💎</span>
-      Mit, your match
-      <span style="font-size:2.2rem;vertical-align:middle;filter:drop-shadow(0 0 8px #ffd700cc);margin-left:0.5rem;">💎</span>
-    </div>
-    <div style="margin-top:1.5rem;">
-      <span style="
-        font-size:1.6rem;
-        color:#fffbe6;
-        font-family:'Inter',sans-serif;
-        font-weight:500;
-        letter-spacing:2px;
-        background:linear-gradient(90deg,#ffd700 30%,#b30059 100%);
-        -webkit-background-clip:text;
-        -webkit-text-fill-color:transparent;
-        background-clip:text;
-        text-fill-color:transparent;
-        text-shadow:0 2px 12px #ffd70055;
-        animation:fadeInUp 1.2s 0.5s both;
-        display:inline-block;
-        padding:0.2em 0.7em;
-        border-radius:1em;
-        ">
-        Infinite potential. Priceless memories.
-      </span>
-    </div>
-    <div style="margin-top:2.2rem;">
-      <div id="loadingBarContainer" style="width:320px;max-width:80vw;margin:0 auto;">
-        <div style="display:flex;align-items:center;gap:1rem;">
-          <span style="font-size:1.25rem;color:#b30059;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:1.5px;">
-            Loading your perfect man...
-          </span>
-          <span id="loadingPercent" style="font-size:1.25rem;color:#ffd700;font-family:'DM Serif Display',serif;font-weight:700;min-width:3.5em;text-align:right;">0%</span>
-        </div>
-        <div style="width:100%;height:18px;background:#222;border-radius:12px;margin-top:1.1rem;box-shadow:0 2px 12px #ffd70044;">
-          <div id="loadingBar" style="height:100%;width:0%;background:linear-gradient(90deg,#ffd700 10%,#b30059 90%);border-radius:12px;transition:width 0.15s;"></div>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:2.5rem;">
-      <span style="
-        font-size:1.1rem;
-        color:#ffd700;
-        font-family:'Inter',sans-serif;
-        letter-spacing:1.2px;
-        opacity:0.7;
-        ">
-        Where your next and final love story could begin.
-      </span>
-    </div>
-  </div>
-</div>
-<script>
-  // Loading bar logic for introOverlay with moving heart and auto-close after 3 seconds
-  document.addEventListener('DOMContentLoaded', function() {
-    const introOverlay = document.getElementById('introOverlay');
-    const loadingBar = document.getElementById('loadingBar');
-    const loadingPercent = document.getElementById('loadingPercent');
-    const heartbeatAudio = document.getElementById('heartbeatAudio');
-    const mainHeart = document.getElementById('mainHeart');
-    const heartBg = document.getElementById('throbHeartBg');
-    let percent = 0;
-    let interval = setInterval(() => {
-      percent++;
-      loadingBar.style.width = percent + "%";
-      loadingPercent.textContent = percent + "%";
-      // Move heart from left (0%) to right (calc(100% - heart width))
-      const containerWidth = heartBg.offsetWidth;
-      const heartWidth = mainHeart.offsetWidth;
-      // Clamp so heart doesn't overflow
-      const maxLeft = containerWidth - heartWidth;
-      const leftPx = Math.max(0, Math.min(maxLeft, (percent / 100) * maxLeft));
-      mainHeart.style.left = leftPx + "px";
-      if (percent === 1) {
-        try { heartbeatAudio.volume = 0.13; heartbeatAudio.play(); } catch(e){}
-      }
-      if (percent >= 100) {
-        clearInterval(interval);
-        setTimeout(() => {
-          introOverlay.style.opacity = "0";
-          setTimeout(() => {
-            introOverlay.style.display = "none";
-            heartbeatAudio.pause();
-          }, 1000);
-        }, 3000); // Wait 3 seconds after reaching 100%
-      }
-    }, 50); // 100% in 5 seconds (5000ms / 100 = 50ms per increment)
-  });
-</script>
-<script>
-  // Password protection for the entire site with "Chemistry unlocked" transition
-  const overlay = document.getElementById('sitePasswordOverlay');
-  const input = document.getElementById('sitePasswordInput');
-  const btn = document.getElementById('sitePasswordBtn');
-  const error = document.getElementById('sitePasswordError');
-  const PASSWORD = "littymitty";
-
-  // Create chemistry unlocked overlay (hidden by default)
-  let chemOverlay = document.createElement('div');
-  chemOverlay.id = "chemistryUnlockedOverlay";
-  chemOverlay.style = "position:fixed;inset:0;z-index:100001;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity 1.2s;opacity:0;pointer-events:none;";
-  chemOverlay.innerHTML = `
-    <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
-      <span style="font-size:13rem;animation:throbHeart 1.2s infinite cubic-bezier(.77,0,.18,1);text-shadow:0 0 96px #b30059cc,0 0 48px #ffd70099,0 0 32px #b3005988;filter:blur(0.5px);">❤️</span>
-      <div style="color:#ffd700;font-size:2.2rem;font-family:'DM Serif Display',serif;letter-spacing:2px;margin-top:2.5rem;opacity:1;">
-        Chemistry unlocked.
-      </div>
-    </div>
-  `;
-  document.body.appendChild(chemOverlay);
-
-  function unlockSite() {
-    if (input.value === PASSWORD) {
-      chemOverlay.style.opacity = "1";
-      chemOverlay.style.pointerEvents = "auto";
-      setTimeout(() => {
-        overlay.style.display = "none";
-        chemOverlay.style.opacity = "0";
-        chemOverlay.style.pointerEvents = "none";
-        document.body.style.overflow = "";
-        // Show main site intro overlay (if hidden)
-        const introOverlay = document.getElementById('introOverlay');
-        if (introOverlay) {
-          introOverlay.style.opacity = "1";
-          introOverlay.style.display = "flex";
-        }
-      }, 2200);
-    } else {
-      error.style.display = "block";
-      input.value = "";
-      input.focus();
-    }
-  }
-
-  btn.onclick = unlockSite;
-  input.addEventListener('keydown', function(e) {
-    if (e.key === "Enter") unlockSite();
-
-
-
-
-
-  });
-
-  // Prevent scrolling while locked
-  document.body.style.overflow = "hidden";
-  input.focus();
-</script>
-<style>
-@keyframes throbHeart {
-  0% { transform: scale(1);}
-  20% { transform: scale(1.13);}
-  40% { transform: scale(0.97);}
-  60% { transform: scale(1.18);}
-  80% { transform: scale(0.96);}
-  100% { transform: scale(1);}
-}
-</style>
-<!-- Add this near the end of your <body>, after all other scripts -->
-<script>
-  // --- Heart emoji sets for SFW and NSFW/Easter Egg ---
+    // --- Emoji arrays for hearts ---
   const heartEmojisSFW = [
     '💖','💙','💚','💛','💜','🧡','🤎','🩷','🩵','🩶','❤️','🖤',
     '💸','🥃','🏃‍♂️','🏃‍♀️','💌','💍','💋','💃','🕺'
@@ -1403,43 +1021,7 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
     '💋','🍑','🍒','👄','🔥','🩲','🛏️','🍆','🥵','🥂','🍷','😏','😈','💦','🦵','👅','💣','🫦','👙','🕺','💃'
   ];
 
-  // --- Easter Egg Toggle Logic ---
-  const nsfwToggle = document.getElementById('nsfwToggle');
-  const nsfwLabel = document.getElementById('nsfwLabel');
-  let nsfwUnlocked = false;
-  const NSFW_CODE = "696969";
-
-  nsfwToggle.addEventListener('change', function(e) {
-    if (!nsfwUnlocked && nsfwToggle.checked) {
-      setTimeout(() => {
-        let code = prompt("Enter the 6-digit code to unlock the Easter Egg mode:");
-        if (code === NSFW_CODE) {
-          nsfwUnlocked = true;
-          nsfwToggle.checked = true;
-          nsfwLabel.textContent = 'Easter Egg: ON';
-          document.body.classList.add('nsfw-mode');
-          swapHearts(heartEmojisNSFW);
-          makeNSFWContent();
-        } else {
-          nsfwToggle.checked = false;
-          alert("Nice try, but only those who know the secret code get to see Mit's wild side. 😉");
-        }
-      }, 100);
-      return;
-    }
-    if (nsfwToggle.checked) {
-      document.body.classList.add('nsfw-mode');
-      nsfwLabel.textContent = 'Easter Egg: ON';
-      swapHearts(heartEmojisNSFW);
-      makeNSFWContent();
-    } else {
-      document.body.classList.remove('nsfw-mode');
-      nsfwLabel.textContent = 'Easter Egg';
-      swapHearts(heartEmojisSFW);
-      revertNSFWContent();
-    }
-  });
-
+  // --- Swap floating hearts to new emoji set ---
   function swapHearts(emojiArr) {
     const hearts = document.querySelectorAll('.hearts-bg .heart');
     hearts.forEach((heart, i) => {
@@ -1447,8 +1029,232 @@ testimonialTimeout = setInterval(nextTestimonial, 7000);
     });
   }
 
-  // --- Paste your makeNSFWContent and revertNSFWContent here (from previous answer) ---
-  // ... (your functions from above) ...
+  // --- Make the page more NSFW (text, tiles, etc) ---
+  function makeNSFWContent() {
+    // Tiles
+    const sfwTiles = document.querySelector('.sfw-tiles');
+    const nsfwTiles = document.querySelector('.nsfw-tiles');
+    if (sfwTiles && nsfwTiles) {
+      sfwTiles.style.display = 'none';
+      nsfwTiles.style.display = '';
+      nsfwTiles.innerHTML = `
+        <div class="tile"><b>🍑 Late Night Dessert Tasting</b> <span style="color:#ff69b4;">(No utensils required)</span></div>
+        <div class="tile"><b>👄 Whispered Secrets & Lip Service</b> <span style="color:#ff69b4;">(NSFW: Not So Forgettable Whispers)</span></div>
+        <div class="tile"><b>🛏️ Breakfast in Bed</b> <span style="color:#ff69b4;">(Or just stay in bed... all day)</span></div>
+        <div class="tile"><b>🍷 Wine, Dine, and Unwind</b> <span style="color:#ff69b4;">(Clothes optional)</span></div>
+        <div class="tile"><b>🔥 After-Hours Massage Exchange</b> <span style="color:#ff69b4;">(Happy endings guaranteed)</span></div>
+        <div class="tile"><b>🍒 Truth or Dare:</b> <span style="color:#ff69b4;">Unfiltered, Uncensored</span></div>
+        <div class="tile"><b>🩲 Lingerie Fashion Show</b> <span style="color:#ff69b4;">(Audience: Mit, Judge: Chemistry)</span></div>
+        <div class="tile"><b>🦵 Leg Day</b> <span style="color:#ff69b4;">(But not at the gym...)</span></div>
+        <div class="tile"><b>💋 Kissing Lessons</b> <span style="color:#ff69b4;">(Advanced Only—bring chapstick)</span></div>
+      `;
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Features Section Header
+    const featuresHeader = document.querySelector('.features-section h2');
+    if (featuresHeader) {
+      featuresHeader.innerHTML = '🔥 The Spicy Side: What You & Mit Could Get Up To 🔥';
+    }
+
+    // Stats Section Header & Stats
+    const statsHeader = document.querySelector('.stats-section h2');
+    if (statsHeader) {
+      statsHeader.innerHTML = '💦 The NSFW Rundown: Can You Handle Him?';
+    }
+    const auctionStats = document.querySelector('.auction-stats');
+    if (auctionStats) {
+      auctionStats.innerHTML = `
+        <span><b>🍆 Energy:</b> Off the charts (and the bed)</span>
+        <span><b>🍑 Favorite Asset:</b> You’ll have to find out (hint: it’s not just his heart)</span>
+        <span><b>💋 Kissing Style:</b> Slow, deep, and unforgettable</span>
+        <span><b>🛏️ Stamina:</b> Let’s just say you’ll need breakfast in bed</span>
+        <span><b>🔥 Flirt Game:</b> Dangerously high—may cause blushing</span>
+        <span><b>🍷 Favorite Move:</b> Whispering in your ear (and maybe biting it)</span>
+        <span><b>🩲 Dress Code:</b> Optional (encouraged: less is more)</span>
+        <span><b>💦 Weakness:</b> Soft touches & bold souls</span>
+        <span><b>🎨 Can Draw You Like One of His French Girls</b></span>
+      `;
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Testimonials Section Header
+    const testimonialsHeader = document.querySelector('.testimonials-section h2');
+    if (testimonialsHeader) {
+      testimonialsHeader.innerHTML = '💋🔥 What They Whisper About Mit 🔥💋';
+    }
+
+    // Testimonials (carousel)
+    window.testimonials = [
+      "<b>Mit’s kisses are more addictive than his cooking.</b> – Anonymous",
+      "<b>He’s got a PhD in pleasure.</b> – Also Anonymous",
+      "<b>He left me breathless—in more ways than one.</b> – S.",
+      "<b>I thought I could handle the heat. I was wrong.</b> – T.",
+      "<b>The only thing more dangerous than his smile is his touch.</b> – R."
+    ];
+    window.testimonialIndex = 0;
+    if (typeof showTestimonial === "function") showTestimonial(0);
+
+    // FAQ Section
+    const sfwFaq = document.querySelector('.sfw-faq');
+    const nsfwFaq = document.querySelector('.nsfw-faq');
+    if (sfwFaq && nsfwFaq) {
+      sfwFaq.style.display = 'none';
+      nsfwFaq.style.display = '';
+      nsfwFaq.innerHTML = `
+        <h2 style="color:#ff69b4;">❓ Easter Egg FAQ: All Your Spiciest Questions, Answered ❓</h2>
+        <div class="faq-item"><h3>How spicy can Mit get?</h3><p><b>He can handle the heat—in and out of the kitchen (and everywhere else).</b></p></div>
+        <div class="faq-item"><h3>Is Mit a good kisser?</h3><p><b>Rumor has it, you’ll be left breathless and wanting more…</b></p></div>
+        <div class="faq-item"><h3>What happens after midnight?</h3><p><b>That’s for you and Mit to discover. No spoilers (but bring water).</b></p></div>
+        <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p><b>Only if you promise to wear nothing else.</b></p></div>
+        <div class="faq-item"><h3>How does Mit handle PDA?</h3><p><b>He believes in hands everywhere—and kisses that linger (and wander).</b></p></div>
+      `;
+    }
+
+    // Form Section Header & CTA
+    const formHeader = document.querySelector('.form-section h2');
+    if (formHeader) {
+      formHeader.innerHTML = '🔥 Submit Your Boldest Bid';
+    }
+    const sfwFormCta = document.querySelector('.sfw-form-cta');
+    const nsfwFormCta = document.querySelector('.nsfw-form-cta');
+    if (sfwFormCta && nsfwFormCta) {
+      sfwFormCta.style.display = 'none';
+      nsfwFormCta.style.display = '';
+      nsfwFormCta.innerHTML = "<b>Don’t be shy—Mit likes it bold. 😏</b>";
+    }
+  }
+
+  // --- Revert to SFW Content ---
+  function revertNSFWContent() {
+    // Tiles
+    const sfwTiles = document.querySelector('.sfw-tiles');
+    const nsfwTiles = document.querySelector('.nsfw-tiles');
+    if (sfwTiles && nsfwTiles) {
+      sfwTiles.style.display = '';
+      nsfwTiles.style.display = 'none';
+      sfwTiles.innerHTML = `
+        <div class="tile" data-aos="fade-up">🍽️ Candlelit Chaos with Mit</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="100">🎤 Karaoke Duet Showdown</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="200">🎵 Spotify Collab Playlist</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="300">🕺 Midnight Rooftop Dance Party</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="400">🍦 Ice Cream Taste Test Challenge</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="500">📸 Polaroid Photoshoot Keepsake</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="600">🎨 Mit Draws You as Anime</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="700">🍛 Imitation Crab Cook-Along</div>
+        <div class="tile" data-aos="fade-up" data-aos-delay="800">🧩 Late Night Deep Talks & Puzzle Solving</div>
+      `;
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Features Section Header
+    const featuresHeader = document.querySelector('.features-section h2');
+    if (featuresHeader) {
+      featuresHeader.innerHTML = '✨ Imagine the Possibilities of Things You Could Do With Him ✨';
+    }
+
+    // Stats Section Header & Stats
+    const statsHeader = document.querySelector('.stats-section h2');
+    if (statsHeader) {
+      statsHeader.innerHTML = '💫 The Royal Rundown: Is Your Heart Ready?';
+    }
+    const auctionStats = document.querySelector('.auction-stats');
+    if (auctionStats) {
+      auctionStats.innerHTML = `
+        <span data-aos="fade-right">📏 Height: 5'7" (7'2" energy)</span>
+        <span data-aos="fade-right" data-aos-delay="100">📚 MBTI: INFJ</span>
+        <span data-aos="fade-right" data-aos-delay="200">👑 Ethnicity: Indian Royalty</span>
+        <span data-aos="fade-right" data-aos-delay="300">💖 Love Language: Banter</span>
+        <span data-aos="fade-right" data-aos-delay="400">🔥 Spice Tolerance: 11/10</span>
+        <span data-aos="fade-right" data-aos-delay="500">😏 Flirt Game: Dangerously High</span>
+        <span data-aos="fade-right" data-aos-delay="600">🎨 Can Draw You Like One of His French Girls</span>
+        <span data-aos="fade-right" data-aos-delay="700">🎵 Playlist Game: Certified Heartthrob</span>
+        <span data-aos="fade-right" data-aos-delay="800">🍦 Ice Cream Preference: Shares the Last Bite</span>
+        <span data-aos="fade-right" data-aos-delay="900">🕺 Dance Moves: Will Make You Laugh (or Swoon)</span>
+        <span data-aos="fade-right" data-aos-delay="1000">💬 Text Back Speed: Faster Than Your Ex</span>
+        <span data-aos="fade-right" data-aos-delay="1100">🌙 Ideal Date: Deep Talks Until 3AM</span>
+      `;
+      if (window.AOS) AOS.refresh();
+    }
+
+    // Testimonials Section Header
+    const testimonialsHeader = document.querySelector('.testimonials-section h2');
+    if (testimonialsHeader) {
+      testimonialsHeader.innerHTML = '👑✨ What People Are Saying ✨👑';
+    }
+
+    // Testimonials (carousel)
+    window.testimonials = [
+      'Mit is like if your favorite playlist came to life — except he cooks too. – Dia',
+      'He ghosted me... but in a way that made me feel seen. – Tasha',
+      'My mom still asks about him. – Anjali',
+      "He's a walking green flag, but don't tell him that. – Laila",
+      "My son is one-of-a-kind. He deserves someone extraordinary. – Mit's Mom"
+    ];
+    window.testimonialIndex = 0;
+    if (typeof showTestimonial === "function") showTestimonial(0);
+
+    // FAQ Section
+    const sfwFaq = document.querySelector('.sfw-faq');
+    const nsfwFaq = document.querySelector('.nsfw-faq');
+    if (sfwFaq && nsfwFaq) {
+      sfwFaq.style.display = '';
+      nsfwFaq.style.display = 'none';
+      sfwFaq.innerHTML = `
+        <h2>💎 FAQ: All Your Burning Questions, Answered 💎</h2>
+        <div class="faq-item"><h3>Can I bid with vibes?</h3><p>Absolutely. Bonus points for poetry or playlists.</p></div>
+        <div class="faq-item"><h3>Is this real?</h3><p>Is love ever not?</p></div>
+        <div class="faq-item"><h3>What happens after the auction?</h3><p>We connect you with Mit (or not, depending on vibes compatibility).</p></div>
+        <div class="faq-item"><h3>Is this a prank?</h3><p>Only if you don’t shoot your shot.</p></div>
+        <div class="faq-item"><h3>Will Mit serenade me if I win?</h3><p>Only if you promise not to fall too hard.</p></div>
+        <div class="faq-item"><h3>Is Mit a good kisser?</h3><p>Rumor has it, you’ll be left wanting more…</p></div>
+        <div class="faq-item"><h3>Can I expect a midnight “u up?” text?</h3><p>If the vibes are right, you might get more than one.</p></div>
+        <div class="faq-item"><h3>Will Mit let me steal his hoodie (and maybe his heart)?</h3><p>Only if you promise to wear it on the next date.</p></div>
+        <div class="faq-item"><h3>What’s Mit’s stance on PDA?</h3><p>He believes in holding hands—and maybe stealing a kiss when no one’s looking.</p></div>
+        <div class="faq-item"><h3>How does Mit handle spicy situations?</h3><p>He can take the heat—in the kitchen and out.</p></div>
+      `;
+    }
+
+    // Form Section Header & CTA
+    const formHeader = document.querySelector('.form-section h2');
+    if (formHeader) {
+      formHeader.innerHTML = '✨ Submit Your Bid';
+    }
+    const sfwFormCta = document.querySelector('.sfw-form-cta');
+    const nsfwFormCta = document.querySelector('.nsfw-form-cta');
+    if (sfwFormCta && nsfwFormCta) {
+      sfwFormCta.style.display = '';
+      nsfwFormCta.style.display = 'none';
+      sfwFormCta.innerHTML = "Don’t be shy—this is your moment!";
+    }
+  }
+
+  // NSFW password overlay logic
+  const overlay = document.getElementById('sitePasswordOverlay');
+    const input = document.getElementById('sitePasswordInput');
+    const btn = document.getElementById('sitePasswordBtn');
+    const error = document.getElementById('sitePasswordError');
+    const PASSWORD = "littymitty";
+
+    if (!overlay) return;
+
+    // Prevent scrolling while overlay is active
+    document.body.style.overflow = "hidden";
+
+    btn.addEventListener('click', function() {
+      if (input.value.trim().toLowerCase() === PASSWORD) {
+        overlay.style.display = "none";
+        document.body.style.overflow = "";
+      } else {
+        error.style.display = "block";
+        error.textContent = "Incorrect password. Try again!";
+      }
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === "Enter") btn.click();
+    });
+  });
 </script>
 </body>
 </html>
