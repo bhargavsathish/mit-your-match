@@ -18,6 +18,14 @@
       overflow-x: hidden;
       position: relative;
     }
+    .main-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     h1, h2 {
       font-family: 'DM Serif Display', serif;
     }
@@ -57,8 +65,7 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+      width: 100%;
     }
     .tile {
       background: linear-gradient(145deg, #fffdf8, #f7ede0);
@@ -76,9 +83,14 @@
       transform: scale(1.05);
       background-color: #ffe4ec;
     }
-    .testimonials, .faq, .form-section {
-      max-width: 800px;
+    .countdown {
+      text-align: center;
+      font-size: 1.5rem;
       margin: 2rem auto;
+      color: #b30059;
+    }
+    .testimonials, .faq, .form-section {
+      width: 100%;
       padding: 1rem;
     }
     .testimonial {
@@ -124,8 +136,7 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
+      width: 100%;
     }
     .auction-stats span {
       background-color: #fff;
@@ -157,75 +168,74 @@
   </style>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      AOS.init({ once: true, duration: 1000 });
-      document.addEventListener('mousemove', function(e) {
-        const trail = document.createElement('div');
-        trail.className = 'sparkle';
-        trail.style.top = `${e.clientY}px`;
-        trail.style.left = `${e.clientX}px`;
-        document.body.appendChild(trail);
-        setTimeout(() => trail.remove(), 700);
-      });
+    AOS.init();
+    document.addEventListener('mousemove', function(e) {
+      const trail = document.createElement('div');
+      trail.className = 'sparkle';
+      trail.style.top = `${e.clientY}px`;
+      trail.style.left = `${e.clientX}px`;
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 700);
     });
   </script>
 </head>
 <body>
   <div class="sparkle" style="top: 50%; left: 30%;"></div>
   <div class="sparkle" style="top: 20%; left: 70%; animation-delay: 1s;"></div>
-  <div class="intro" data-aos="zoom-in">
-    <h1>💘 Mit, Your Match 💘</h1>
-    <p>One Mit. Infinite Potential. (Emotional net worth: 💎 Priceless)</p>
-    <div class="ipo-note">IPO drops July 4 @ 11:59 PM EST 🕛 — bid now or regret forever 💔</div>
-  </div>
-  <div class="divider"></div>
-  <div class="tiles">
-    <div class="tile" data-aos="fade-up">🍽️ Dinner With Mit</div>
-    <div class="tile" data-aos="fade-up" data-aos-delay="100">🎙️ Custom Voice Note</div>
-    <div class="tile" data-aos="fade-up" data-aos-delay="200">🎵 Spotify Collab Playlist</div>
-    <div class="tile" data-aos="fade-up" data-aos-delay="300">🧵 Custom Dating Advice</div>
-    <div class="tile" data-aos="fade-up" data-aos-delay="400">🎨 Mit Draws You as Anime</div>
-    <div class="tile" data-aos="fade-up" data-aos-delay="500">🍛 Imitation Crab Cook-Along</div>
-  </div>
-  <div class="divider"></div>
-  <div class="auction-stats">
-    <span data-aos="fade-right">📏 Height: 5'7" (7'2" energy)</span>
-    <span data-aos="fade-right" data-aos-delay="100">📚 MBTI: INFJ</span>
-    <span data-aos="fade-right" data-aos-delay="200">👑 Ethnicity: Indian Royalty</span>
-    <span data-aos="fade-right" data-aos-delay="300">💖 Love Language: Banter</span>
-    <span data-aos="fade-right" data-aos-delay="400">🔥 Spice Tolerance: 11/10</span>
-  </div>
-  <div class="divider"></div>
-  <div class="testimonials">
-    <h2>💬 What People Are Saying</h2>
-    <div class="testimonial" data-aos="fade-left">"Mit is like if your favorite playlist came to life — except he cooks too." – Dia</div>
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="100">"He ghosted me... but in a way that made me feel seen." – Tasha</div>
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="200">"My mom still asks about him." – Anjali</div>
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="300">"He's a walking green flag, but don't tell him that." – Laila</div>
-    <div class="testimonial" data-aos="fade-left" data-aos-delay="400">"My son is one-of-a-kind. He deserves someone extraordinary." – Mit's Mom</div>
-  </div>
-  <div class="divider"></div>
-  <div class="faq">
-    <h2>❓ FAQ</h2>
-    <h3>Can I bid with vibes?</h3>
-    <p>Absolutely. Bonus points for poetry or playlists.</p>
-    <h3>Is this real?</h3>
-    <p>Is love ever not?</p>
-    <h3>What happens after the auction?</h3>
-    <p>We connect you with Mit (or not, depending on vibes compatibility).</p>
-    <h3>Is this a prank?</h3>
-    <p>Only if you don’t shoot your shot.</p>
-  </div>
-  <div class="divider"></div>
-  <div class="form-section">
-    <h2>📨 Submit Your Bid</h2>
-    <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Your email" required>
-      <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
-      <button type="submit">Shoot Your Shot</button>
-    </form>
+  <div class="main-container">
+    <div class="intro" data-aos="zoom-in">
+      <h1>💘 Mit, Your Match 💘</h1>
+      <p>One Mit. Infinite Potential. (Emotional net worth: 💎 Priceless)</p>
+      <div class="ipo-note">IPO drops July 4 @ 11:59 PM EST 🕛 — bid now or regret forever 💔</div>
+    </div>
+    <div class="divider"></div>
+    <div class="tiles">
+      <div class="tile" data-aos="fade-up">🍽️ Dinner With Mit</div>
+      <div class="tile" data-aos="fade-up" data-aos-delay="100">🎙️ Custom Voice Note</div>
+      <div class="tile" data-aos="fade-up" data-aos-delay="200">🎵 Spotify Collab Playlist</div>
+      <div class="tile" data-aos="fade-up" data-aos-delay="300">🧵 Custom Dating Advice</div>
+      <div class="tile" data-aos="fade-up" data-aos-delay="400">🎨 Mit Draws You as Anime</div>
+      <div class="tile" data-aos="fade-up" data-aos-delay="500">🍛 Imitation Crab Cook-Along</div>
+    </div>
+    <div class="divider"></div>
+    <div class="auction-stats">
+      <span data-aos="fade-right">📏 Height: 5'7" (7'2" energy)</span>
+      <span data-aos="fade-right" data-aos-delay="100">📚 MBTI: INFJ</span>
+      <span data-aos="fade-right" data-aos-delay="200">👑 Ethnicity: Indian Royalty</span>
+      <span data-aos="fade-right" data-aos-delay="300">💖 Love Language: Banter</span>
+      <span data-aos="fade-right" data-aos-delay="400">🔥 Spice Tolerance: 11/10</span>
+    </div>
+    <div class="divider"></div>
+    <div class="testimonials">
+      <h2>💬 What People Are Saying</h2>
+      <div class="testimonial" data-aos="fade-left">"Mit is like if your favorite playlist came to life — except he cooks too." – Dia</div>
+      <div class="testimonial" data-aos="fade-left" data-aos-delay="100">"He ghosted me... but in a way that made me feel seen." – Tasha</div>
+      <div class="testimonial" data-aos="fade-left" data-aos-delay="200">"My mom still asks about him." – Anjali</div>
+      <div class="testimonial" data-aos="fade-left" data-aos-delay="300">"He's a walking green flag, but don't tell him that." – Laila</div>
+      <div class="testimonial" data-aos="fade-left" data-aos-delay="400">"My son is one-of-a-kind. He deserves someone extraordinary." – Mit's Mom</div>
+    </div>
+    <div class="divider"></div>
+    <div class="faq">
+      <h2>❓ FAQ</h2>
+      <h3>Can I bid with vibes?</h3>
+      <p>Absolutely. Bonus points for poetry or playlists.</p>
+      <h3>Is this real?</h3>
+      <p>Is love ever not?</p>
+      <h3>What happens after the auction?</h3>
+      <p>We connect you with Mit (or not, depending on vibes compatibility).</p>
+      <h3>Is this a prank?</h3>
+      <p>Only if you don’t shoot your shot.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="form-section">
+      <h2>📨 Submit Your Bid</h2>
+      <form action="https://formsubmit.co/bhargavsathish2@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="pitch" rows="4" placeholder="Why you and Mit are a match" required></textarea>
+        <button type="submit">Shoot Your Shot</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
-
